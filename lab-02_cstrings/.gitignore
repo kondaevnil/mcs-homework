@@ -1,0 +1,13 @@
+# This lab:
+/lab-02_cstrings
+
+# General build directories:
+# - for Makefile:
+/obj/
+# - for CMake, by default:
+/build/
+/_build/
+
+# CLion projects:
+/.idea/
+/cmake-build*/
