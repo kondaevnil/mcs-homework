@@ -12,15 +12,14 @@ OBJECTS = $(patsubst ./src/%.c, ./obj/%.o, $(CSOURCES))
 
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS)
+$(TARGET): obj $(OBJECTS)
 	$(CC) $(CFLAGES) $(OBJECTS) -o $(TARGET)
 
-./obj/%.o: ./src/%.c $(INCLUDE)
-	if [ ! -d "obj" ]; then mkdir obj; fi
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+./obj/%.o: ./src/%.c
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
 
-prepare:
-	if [ ! -d "obj" ]; then mkdir obj; fi
+obj:
+	mkdir obj
 
 clean:
 	if [ -d "obj" ]; then rm -rf obj/*.o -d obj; fi
