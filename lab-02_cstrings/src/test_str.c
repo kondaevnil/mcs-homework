@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void test_name(char *name)
+void test_name(const char *name)
 {
     printf("# %s test\n", name);
 }
@@ -19,25 +19,20 @@ void test_strcpy(void)
 {
     char dest[12], tmp_dest[12];
     const char *src = "hello";
-    size_t i;
     int number = 1;
 
     test_name("strcpy");
 
     test_number(number++);
-    my_strcpy(dest, src);
+    assert(my_strcpy(dest, src) == dest);
     strcpy(tmp_dest, src);
-
-    for (i = 0; i < strlen(dest) + 1; i++)
-        assert(dest[i] == tmp_dest[i]);
+    assert(strcmp(dest, tmp_dest) == 0);
 
 
     test_number(number);
-    my_strcpy(dest + 5, src + 5);
+    assert(my_strcpy(dest, src) == dest);
     strcpy(tmp_dest + 5, src + 5);
-
-    for (i = 0; i < strlen(dest) + 1; i++)
-        assert(dest[i] == tmp_dest[i]);
+    assert(strcmp(dest, tmp_dest) == 0);
 }
 
 void test_strcat(void)
@@ -45,24 +40,19 @@ void test_strcat(void)
     char dest[18];
     const char *result = "i love C language";
     int number = 1;
-    size_t i;
-
-    strcpy(dest, "i love");
-    my_strcat(dest, " C language");
 
     test_name("strcat");
 
     test_number(number++);
-    for (i = 0; i < strlen(dest) + 1; i++)
-        assert(dest[i] == result[i]);
+    strcpy(dest, "i love");
+    assert(my_strcat(dest, " C language") == dest);
+    assert(strcmp(dest, result) == 0);
 
     test_number(number);
-    for (i = 0; i < 18; i++)
-        dest[i] = 0;
+    memset(dest, 0, sizeof(dest));
 
-    my_strcpy(dest, "i love C language");
-    for (i = 0; i < strlen(dest) + 1; i++)
-        assert(dest[i] == result[i]);
+    assert(my_strcpy(dest, "i love C language") == dest);
+    assert(strcmp(dest, result) == 0);
 }
 
 void test_strcmp(void)
