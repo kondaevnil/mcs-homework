@@ -18,7 +18,7 @@ void test_number(int number)
 void test_strcpy(void)
 {
     char dest[12], tmp_dest[12];
-    char *src = "hello";
+    const char *src = "hello";
     size_t i;
     int number = 1;
 
@@ -43,7 +43,7 @@ void test_strcpy(void)
 void test_strcat(void)
 {
     char dest[18];
-    char *result = "i love C language";
+    const char *result = "i love C language";
     int number = 1;
     size_t i;
 
