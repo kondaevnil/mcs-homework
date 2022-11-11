@@ -19,7 +19,8 @@ void test_strcpy(void)
 {
     char dest[12], tmp_dest[12];
     char *src = "hello";
-    int i, number = 1;
+    size_t i;
+    int number = 1;
 
     test_name("strcpy");
 
@@ -43,7 +44,8 @@ void test_strcat(void)
 {
     char dest[18];
     char *result = "i love C language";
-    int i, number = 1;
+    int number = 1;
+    size_t i;
 
     strcpy(dest, "i love");
     my_strcat(dest, " C language");
