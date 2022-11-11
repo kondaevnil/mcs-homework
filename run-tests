@@ -100,8 +100,8 @@ rm -rf $OUTPUT_DIR/*
 ## BUILDING
 
 if [[ -f "$PROJECT_DIR/CMakeLists.txt" ]] ; then
-	message "Detected CMake, initializing build directory at $BUILD_DIR."
 	BUILD_DIR="$PROJECT_DIR/_build"
+	message "Detected CMake, initializing build directory at $BUILD_DIR."
 	mkdir -p "$BUILD_DIR"
 	if ! cmake -S "$PROJECT_DIR" -B "$BUILD_DIR" -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE='Debug' ; then
 		error "CMake build generation failed"
@@ -193,13 +193,7 @@ function customize_build {
 	key="$1"
 	context="$2"
 
-	if [[ -f "$TESTS_DIR/$key.target.txt" ]] ; then
-		# TODO REMOVE
-		log 'I see old-style custom build.'
-		local MODE=testee
-		local REPLACE_TARGET="$(cat "$TESTS_DIR/$key.target.txt")"
-		local REPLACE_WITH="$key.replacement.txt"
-	elif [[ -f "$TESTS_DIR/$key.custom-build.env" ]] ; then
+	if [[ -f "$TESTS_DIR/$key.custom-build.env" ]] ; then
 		log 'I see env-style custom build.'
 		local MODE
 		local REPLACE_PROJECT_DIR
