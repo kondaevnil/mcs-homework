@@ -72,13 +72,19 @@ void test_strcmp(void)
     test_name("strcmp");
 
     test_number(number++);
-    assert(my_strcmp("pointer on", "pointer on int") == strcmp("pointer on", "pointer on int"));
+    assert(my_strcmp("pointer on", "pointer on int") < 0 && strcmp("pointer on", "pointer on int") < 0);
 
     test_number(number++);
-    assert(my_strcmp("pointer on int", "pointer on") == strcmp("pointer on int", "pointer on"));
+    assert(my_strcmp("pointer on int", "pointer on") > 0 && strcmp("pointer on int", "pointer on") > 0);
+
+    test_number(number++);
+    assert(my_strcmp("pointer on int", "pointer on int") == strcmp("pointer on int", "pointer on int"));
 
     test_number(number);
-    assert(my_strcmp("pointer on int", "pointer on int") == strcmp("pointer on int", "pointer on int"));
+    assert(my_strcmp("poInter", "pointer") < 0 && strcmp("poInter", "pointer") < 0);
+
+    test_number(number);
+    assert(my_strcmp("pointer", "poInter") > 0 && strcmp("pointer", "poInter") > 0);
 }
 
 void test_strlen(void)
