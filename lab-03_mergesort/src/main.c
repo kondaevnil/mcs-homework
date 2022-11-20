@@ -69,13 +69,13 @@ int main(int argc, char *argv[])
 {
     int params_count = argc - 2;
 
-    if (strcmp(argv[1], "str") == 0)
+    if (strcmp(argv[1], "str") == 0 && params_count > 0)
     {
         mergesort(argv + 2, params_count, sizeof(char *), str_comparator);
 
         display_buffer(argv + 2, params_count, sizeof(char *), str_display);
     }
-    else if (strcmp(argv[1], "int") == 0)
+    else if (strcmp(argv[1], "int") == 0 && params_count > 0)
     {
         int *buf = (int *)malloc(sizeof(int) * params_count);
 
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 
         free(buf);
     }
-    else if (strcmp(argv[1], "char") == 0)
+    else if (strcmp(argv[1], "char") == 0 && params_count > 0)
     {
         char *buf = (char *)malloc(sizeof(char) * params_count);
 
