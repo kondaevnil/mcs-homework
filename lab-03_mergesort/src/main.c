@@ -1,5 +1,7 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "mergesort.h"
 
 static int int_comparator(const void *a, const void *b)
@@ -19,11 +21,16 @@ static int str_comparator(const void *a, const void *b)
 
 static int str_to_int(const char *string)
 {
-    int value = 0, dec = 1, sign = 1;
+    int value = 0;
+    int dec = 1;
+    int sign = 1;
     const char *start = string;
 
     if (*start == '-')
-        sign = -1, start++;
+    {
+        sign = -1;
+        start++;
+    }
 
     while (*string != 0)
         string++;
@@ -74,9 +81,31 @@ int main(int argc, char *argv[])
 
     if (strcmp(argv[1], "str") == 0)
     {
-        mergesort(argv + 2, params_count, sizeof(char *), str_comparator);
+        char **buf = (char **)malloc(sizeof(char *) * params_count);
 
-        display_buffer(argv + 2, params_count, sizeof(char *), str_display);
+        if (buf == NULL)
+        {
+            printf("Error: memory allocation failed.");
+            return 1;
+        }
+
+        // Copy values to buffer
+        for (int i = 0; i < params_count; i++)
+            buf[i] = argv[i + 2];
+
+        // Check if memory allocation is successfully done and then sorting
+        if (mergesort(buf, params_count, sizeof(char *), str_comparator) == -1)
+        {
+            free(buf);
+
+            printf("Error: memory allocation failed.");
+
+            return 1;
+        }
+
+        display_buffer(buf, params_count, sizeof(char *), str_display);
+
+        free(buf);
     }
     else if (strcmp(argv[1], "int") == 0)
     {

@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "mergesort.h"
 
 static void copy_data(void *src, void *dest, size_t size)
@@ -11,19 +13,21 @@ static void copy_data(void *src, void *dest, size_t size)
 
 static void merge(void *array, void *tmp, size_t elements, size_t element_size, int (*comparator)(const void *, const void *))
 {
-    size_t m = (elements / 2) * element_size, j = (elements / 2) * element_size, i = 0;
+    size_t total_bytes_size = element_size * elements;
+    size_t m = (elements / 2) * element_size;
+    size_t j = m;
+    size_t i = 0;
 
 
-    for (size_t k = 0; k < elements * element_size; k += element_size)
+    for (size_t k = 0; k < total_bytes_size; k += element_size)
     {
-        if (j >= elements * element_size || (i < m && comparator(array + i, array + j) <= 0))
+        if (j >= total_bytes_size || (i < m && comparator(array + i, array + j) <= 0))
             copy_data(array + i, tmp + k, element_size), i += element_size;
         else
             copy_data(array + j, tmp + k, element_size), j += element_size;
     }
 
-    for (i = 0; i < element_size * elements; i += element_size)
-        copy_data(tmp + i, array + i, element_size);
+    copy_data(tmp, array, total_bytes_size);
 }
 
 static void merge_recursive(void *array, void *tmp, size_t elements, size_t element_size, int (*comparator)(const void *, const void *))
@@ -31,10 +35,11 @@ static void merge_recursive(void *array, void *tmp, size_t elements, size_t elem
     if (elements <= 1)
         return;
 
-    size_t shift = (elements / 2) * element_size;
+    size_t half = elements / 2;
+    size_t shift = half * element_size;
 
-    merge_recursive(array, tmp, elements / 2, element_size, comparator);
-    merge_recursive(array + shift, tmp + shift, elements - elements / 2, element_size, comparator);
+    merge_recursive(array, tmp, half, element_size, comparator);
+    merge_recursive(array + shift, tmp + shift, elements - half, element_size, comparator);
     merge(array, tmp, elements, element_size, comparator);
 }
 
