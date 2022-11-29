@@ -16,7 +16,9 @@ typedef struct {
 } intrusive_list;
 
 void init_list(intrusive_list *list);
+
 void add_node(intrusive_list *list, intrusive_node *node);
+
 void remove_node(intrusive_list *list, intrusive_node *node);
 
 size_t get_length(intrusive_list *list);

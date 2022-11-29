@@ -73,8 +73,8 @@ int main()
     int exit = 0;
     int x, y;
 
-    intrusive_list l;
-    init_list(&l);
+    intrusive_list *l = malloc(sizeof(intrusive_list));
+    init_list(l);
 
     while (!exit)
     {
@@ -83,26 +83,28 @@ int main()
         if (strcmp(buf, "rm") == 0)
         {
             scanf("%d%d", &x, &y);
-            remove_point(&l, x, y);
+            remove_point(l, x, y);
         }
         else if (strcmp(buf, "add") == 0)
         {
             scanf("%d%d", &x, &y);
-            add_point(&l, x, y);
+            add_point(l, x, y);
         }
         else if (strcmp(buf, "print") == 0)
-            show_all_points(&l);
+            show_all_points(l);
         else if (strcmp(buf, "rma") == 0)
-            remove_all_points(&l);
+            remove_all_points(l);
         else if (strcmp(buf, "exit") == 0)
             exit = 1;
         else if (strcmp(buf, "len") == 0)
-            printf("%zu\n", get_length(&l));
+            printf("%zu\n", get_length(l));
         else
             printf("Unknown command\n");
     }
 
-    remove_all_points(&l);
-    free(l.head);
+    remove_all_points(l);
+    free(l->head);
+    free(l);
+
     return 0;
 }
