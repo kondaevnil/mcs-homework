@@ -19,7 +19,10 @@ void add_node(intrusive_list *list, intrusive_node *node)
 void remove_node(intrusive_list *list, intrusive_node *node)
 {
     if (node == list->head)
+    {
         list->head = node->next; // if node is head then move head to the next node
+        list->head->prev = NULL;
+    }
     else
     {
         node->prev->next = node->next;
