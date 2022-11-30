@@ -37,7 +37,8 @@ void remove_node(intrusive_list *list, intrusive_node *node)
     else
     {
         node->prev->next = node->next;
-        node->next->prev = node->prev;
+        if (node->next != NULL)
+            node->next->prev = node->prev;
     }
 
     list->length--;
