@@ -4,6 +4,7 @@
 void init_list(intrusive_list *list)
 {
     list->head = (intrusive_node *)malloc(sizeof(intrusive_node));
+    list->head->next = NULL;
     list->length = 0;
 }
 
