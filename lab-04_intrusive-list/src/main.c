@@ -1,7 +1,7 @@
 #include "clist.h"
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct {
     intrusive_node node;
@@ -10,71 +10,73 @@ typedef struct {
 
 void add_point(intrusive_list *list, int x, int y)
 {
-    point *new_point = (point *)malloc(sizeof(point));
+    point *new_pt = (point *)malloc(sizeof(point));
 
-    new_point->x = x;
-    new_point->y = y;
+    new_pt->x = x;
+    new_pt->y = y;
 
-    add_node(list, (intrusive_node *)new_point);
+    add_node(list, (intrusive_node *)new_pt);
 }
 
 void remove_point(intrusive_list *list, int x, int y)
 {
+    point *pt;
     intrusive_node *walker = list->head;
-    point *tmp;
 
     while (walker->next != NULL)
     {
-        if (((point *)walker)->x == x && ((point *)walker)->y == y)
-        {
-            remove_node(list, walker);
-            tmp = (point *)walker;
-            walker = walker->next;
+        pt = (point *)walker;
+        walker = walker->next;
 
-            free(tmp);
+        if (pt->x == x && pt->y == y)
+        {
+            remove_node(list, walker->prev);
+            free(pt);
         }
-        else
-            walker = walker->next;
     }
 }
 
 void show_all_points(intrusive_list *list)
 {
-    intrusive_node *walker = list->head;
-    size_t counter = list->length;
-
-    while (walker->next != NULL)
+    if (list->length == 0)
     {
-        printf("(%d %d)%c", ((point *)walker)->x, ((point *)walker)->y, counter-- > 1 ? ' ' : '\n');
-
-        walker = walker->next;
+        printf("\n");
+        return;
     }
 
-    if (list->length == 0)
-        printf("\n");
+    point *walker = (point *)list->head;
+    size_t counter = list->length;
+
+    while (walker->node.next != NULL)
+    {
+        printf("(%d %d)%c", walker->x, walker->y, counter > 1 ? ' ' : '\n');
+
+        walker = (point *)walker->node.next;
+        counter--;
+    }
 }
 
 void remove_all_points(intrusive_list *list)
 {
+    point *pt;
     intrusive_node *walker = list->head;
-    point *tmp;
 
     while (walker->next != NULL)
     {
-        remove_node(list, walker);
-        tmp = (point *)walker;
+        pt = (point *)walker;
         walker = walker->next;
-        free(tmp);
+        remove_node(list, walker->prev);
+        free(pt);
     }
 }
 
 int main()
 {
     char buf[100];
-    int exit = 0;
     int x, y;
-
+    int exit = 0;
     intrusive_list l;
+
     init_list(&l);
 
     while (!exit)
@@ -103,6 +105,8 @@ int main()
             printf("Unknown command\n");
     }
 
+
     remove_all_points(&l);
     free(l.head);
+    return 0;
 }

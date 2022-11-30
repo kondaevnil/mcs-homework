@@ -9,18 +9,19 @@ void init_list(intrusive_list *list)
 
 void add_node(intrusive_list *list, intrusive_node *node)
 {
-    list->head->prev = node; // append new node before head
-    node->next = list->head; // append head to next element of node
-    list->head = node;       // swap head and new node
+    list->head->prev = node;
+    node->next = list->head;
+    node->prev = NULL;
+    list->head = node;
 
-    list->length++;          // increase length
+    list->length++;
 }
 
 void remove_node(intrusive_list *list, intrusive_node *node)
 {
     if (node == list->head)
     {
-        list->head = node->next; // if node is head then move head to the next node
+        list->head = list->head->next;
         list->head->prev = NULL;
     }
     else

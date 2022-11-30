@@ -4,15 +4,14 @@
 #include <stddef.h>
 
 typedef struct intrusive_node_ intrusive_node;
-
 struct intrusive_node_ {
-  intrusive_node *next;
-  intrusive_node *prev;
+    intrusive_node *next;
+    intrusive_node *prev;
 };
 
 typedef struct {
-  intrusive_node *head;
-  size_t length;
+    intrusive_node *head;
+    size_t length;
 } intrusive_list;
 
 void init_list(intrusive_list *list);
