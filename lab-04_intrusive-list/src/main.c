@@ -23,14 +23,14 @@ void remove_point(intrusive_list *list, int x, int y)
     point *pt;
     intrusive_node *walker = list->head;
 
-    while (walker->next != NULL)
+    while (walker != NULL)
     {
         pt = (point *)walker;
         walker = walker->next;
 
         if (pt->x == x && pt->y == y)
         {
-            remove_node(list, walker->prev);
+            remove_node(list, (intrusive_node *)pt);
             free(pt);
         }
     }
@@ -47,7 +47,7 @@ void show_all_points(intrusive_list *list)
     point *walker = (point *)list->head;
     size_t counter = list->length;
 
-    while (walker->node.next != NULL)
+    while (walker != NULL)
     {
         printf("(%d %d)%c", walker->x, walker->y, counter > 1 ? ' ' : '\n');
 
@@ -61,11 +61,11 @@ void remove_all_points(intrusive_list *list)
     point *pt;
     intrusive_node *walker = list->head;
 
-    while (walker->next != NULL)
+    while (walker != NULL)
     {
         pt = (point *)walker;
         walker = walker->next;
-        remove_node(list, walker->prev);
+        remove_node(list, (intrusive_node *)pt);
         free(pt);
     }
 }
@@ -107,6 +107,5 @@ int main()
 
 
     remove_all_points(&l);
-    free(l.head);
     return 0;
 }
