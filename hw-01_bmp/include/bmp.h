@@ -1,0 +1,47 @@
+#ifndef BMP_H
+#define BMP_H
+
+typedef struct
+{
+#pragma pack(push, 1)
+    struct
+    {
+        unsigned int type : 16;
+        unsigned int size;
+        unsigned int reserved1 : 16;
+        unsigned int reserved2 : 16;
+        unsigned int offset;
+    } file_header;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+    struct
+    {
+        unsigned int size;
+        int width;
+        int height;
+        unsigned int planes : 16;
+        unsigned int bit_count : 16;
+        unsigned int compression;
+        unsigned int size_image;
+        int x_pels_per_meter;
+        int y_pels_per_meter;
+        unsigned int clr_used;
+        unsigned int clr_important;
+    } info_header;
+#pragma pack(pop)
+
+    unsigned char *bytes;
+} bmp_file;
+
+int load_bmp(bmp_file *bmp, char *filename);
+
+int crop(bmp_file *in_bmp, int x, int y, int w, int h);
+
+int rotate(bmp_file *bmp);
+
+int save_bmp(bmp_file *bmp, char *filename);
+
+void close_bmp(bmp_file *bmp);
+
+#endif
