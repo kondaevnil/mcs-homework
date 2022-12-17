@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-        close_bmp(&f);
+        close_bmp(&image);
     }
 
     return 0;
