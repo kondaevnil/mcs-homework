@@ -49,16 +49,6 @@ int load_bmp(bmp_file *bmp, char *filename)
     int padding = (4 - (bmp->info_header.width * pixel_size) % 4) % 4;
     unsigned char *bytes_pointer = bmp->bytes;
 
-    /*for (int h = 0; h < bmp->info_header.height; h++)
-    {
-        fread(bytes_pointer, pixel_size, bmp->info_header.width, F);
-
-        if (padding != 0)
-            skip_bytes(F, padding, pixel_size);
-
-        bytes_pointer += pixel_size * bmp->info_header.width;
-    }*/
-
     bytes_pointer = bmp->bytes + pixel_size * bmp->info_header.width * (bmp->info_header.height - 1);
     for (int h = 0; h < bmp->info_header.height; h++)
     {
@@ -87,20 +77,10 @@ int save_bmp(bmp_file *bmp, char *filename)
     fwrite(&bmp->info_header, bmp_info_header_size, 1, F);
 
     int pixel_size = bmp->info_header.bit_count / 8;
+
     int padding = (4 - (bmp->info_header.width * pixel_size) % 4) % 4;
-    unsigned char *bytes_pointer = bmp->bytes;
 
-    /*for (int h = 0; h < bmp->info_header.height; h++)
-    {
-        fwrite(bytes_pointer, pixel_size, bmp->info_header.width, F);
-
-        if (padding != 0)
-            zero_bytes(F, padding, pixel_size);
-
-        bytes_pointer += pixel_size * bmp->info_header.width;
-    }*/
-
-    bytes_pointer = bmp->bytes + pixel_size * bmp->info_header.width * (bmp->info_header.height - 1);
+    unsigned char *bytes_pointer = bmp->bytes + pixel_size * bmp->info_header.width * (bmp->info_header.height - 1);
 
     for (int h = 0; h < bmp->info_header.height; h++)
     {

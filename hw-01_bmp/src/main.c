@@ -25,6 +25,12 @@ int main(int argc, char *argv[])
         if (load_bmp(&image, in_file) == 0)
             return 1;
 
+        if (pos_x < 0 || pos_x + crop_w > image.info_header.width || pos_y < 0 || pos_y + crop_h > image.info_header.height)
+        {
+            close_bmp(&image);
+            return 1;
+        }
+
         if (crop(&image, pos_x, pos_y, crop_w, crop_h) == 0)
         {
             close_bmp(&image);
