@@ -51,6 +51,8 @@ int main(int argc, char *argv[])
 
         close_bmp(&image);
     }
+    else
+        return 1;
 
     return 0;
 }
