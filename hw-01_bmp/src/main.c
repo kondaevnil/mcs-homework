@@ -2,49 +2,91 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+static void print_error(int error)
+{
+    switch (error)
+    {
+        case MEMORY_ALLOC_ERROR:
+            printf("Memory allocation error\n");
+            break;
+        case FILE_OPEN_ERROR:
+            printf("File open error\n");
+            break;
+        case NE_ARGS_ERROR:
+            printf("Not enough arguments\n");
+            break;
+        case READING_ERROR:
+            printf("Bmp read error\n");
+            break;
+        case BIT_COUNT_ERROR:
+            printf("Invalid bit per pixel count: expected 24\n");
+            break;
+        case BMP_FORMAT_ERROR:
+            printf("Not little endian or not bmp format\n");
+            break;
+        case BOARDER_ERROR:
+            printf("Invalid boarder size\n");
+            break;
+        case OPERATION_ERROR:
+            printf("Unknown operation\n");
+            break;
+    }
+}
 
 int main(int argc, char *argv[])
 {
     if (argc != 8)
+    {
+        print_error(NE_ARGS_ERROR);
         return 1;
+    }
 
     char *function = argv[1];
     char *in_file  = argv[2];
     char *out_file = argv[3];
 
-    int
-        pos_x  = atoi(argv[4]),
-        pos_y  = atoi(argv[5]),
-        crop_w = atoi(argv[6]),
-        crop_h = atoi(argv[7]);
+    int pos_x  = atoi(argv[4]);
+    int pos_y  = atoi(argv[5]);
+    int crop_w = atoi(argv[6]);
+    int crop_h = atoi(argv[7]);
 
     if (strcmp(function, "crop-rotate") == 0)
     {
         bmp_file image = {0};
+        int func_result;
 
-        if (load_bmp(&image, in_file) == 0)
+        if ((func_result = load_bmp(&image, in_file)) != SUCCESS)
+        {
+            print_error(func_result);
             return 1;
+        }
 
         if (pos_x < 0 || pos_x + crop_w > image.info_header.width || pos_y < 0 || pos_y + crop_h > image.info_header.height)
         {
+            print_error(BOARDER_ERROR);
             close_bmp(&image);
             return 1;
         }
 
-        if (crop(&image, pos_x, pos_y, crop_w, crop_h) == 0)
+        if ((func_result = crop(&image, pos_x, pos_y, crop_w, crop_h)) != SUCCESS)
         {
+            print_error(func_result);
             close_bmp(&image);
             return 1;
         }
 
-        if (rotate(&image) == 0)
+        if ((func_result = rotate(&image)) != SUCCESS)
         {
+            print_error(func_result);
             close_bmp(&image);
             return 1;
         }
 
-        if (save_bmp(&image, out_file) == 0)
+        if ((func_result = save_bmp(&image, out_file)) != SUCCESS)
         {
+            print_error(func_result);
             close_bmp(&image);
             return 1;
         }
@@ -52,7 +94,10 @@ int main(int argc, char *argv[])
         close_bmp(&image);
     }
     else
+    {
+        print_error(OPERATION_ERROR);
         return 1;
+    }
 
     return 0;
 }

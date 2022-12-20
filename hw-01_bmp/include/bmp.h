@@ -44,4 +44,14 @@ int save_bmp(bmp_file *bmp, char *filename);
 
 void close_bmp(bmp_file *bmp);
 
+#define SUCCESS            0
+#define READING_ERROR      1
+#define BMP_FORMAT_ERROR   2
+#define BIT_COUNT_ERROR    3
+#define MEMORY_ALLOC_ERROR 4
+#define FILE_OPEN_ERROR    5
+#define NE_ARGS_ERROR      6
+#define BOARDER_ERROR      7
+#define OPERATION_ERROR    8
+
 #endif
