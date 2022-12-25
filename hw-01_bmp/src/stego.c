@@ -121,7 +121,7 @@ int insert_message(bmp_file *bmp, const char *key_filename, const char *message_
                 return READING_ERROR;
             }
 
-            int insert_ok = insert_bit(bmp, x_pos, y_pos, color, (bits >> i) * get_mask);
+            int insert_ok = insert_bit(bmp, x_pos, y_pos, color, (bits >> i) & get_mask);
 
             if (!insert_ok)
             {
