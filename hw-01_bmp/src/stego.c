@@ -1,10 +1,11 @@
 #include "stego.h"
 #include "stdio.h"
 
-const unsigned char set_mask = 0xff - 0x1f;
-const unsigned char get_mask = 0x1f;
+const unsigned char set_mask = 0xfe;
+const unsigned char get_mask = 0x01;
 const int scan_required = 3;
 const int color_count = 3;
+const int bits_count = 5;
 
 static unsigned char char_to_bits(char ch)
 {
@@ -64,30 +65,27 @@ static int get_color_pos(char color)
         return -1;
 }
 
-static int insert_char(bmp_file *bmp, int x, int y, char color, char ch)
-{
-    int color_pos = get_color_pos(color);
-
-    if (x < 0 || bmp->info_header.width <= x || y < 0 || bmp->info_header.height <= y || color == -1 || !check_char(ch))
-        return 0;
-
-    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] &= set_mask;
-    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] |= char_to_bits(ch);
-
-    return 1;
-}
-
-static int extract_char(bmp_file *bmp, int x, int y, char color, char *ch)
+static int insert_bit(bmp_file *bmp, int x, int y, char color, unsigned char bit)
 {
     int color_pos = get_color_pos(color);
 
     if (x < 0 || bmp->info_header.width <= x || y < 0 || bmp->info_header.height <= y || color == -1)
         return 0;
 
-    if (!check_bits(bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] & get_mask))
+    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] &= set_mask;
+    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] |= bit;
+
+    return 1;
+}
+
+static int extract_bit(bmp_file *bmp, int x, int y, char color, unsigned char *bit)
+{
+    int color_pos = get_color_pos(color);
+
+    if (x < 0 || bmp->info_header.width <= x || y < 0 || bmp->info_header.height <= y || color == -1)
         return 0;
 
-    *ch = bits_to_char(bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] & get_mask);
+    *bit = bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] & get_mask;
 
     return 1;
 }
@@ -109,24 +107,29 @@ int insert_message(bmp_file *bmp, const char *key_filename, const char *message_
 
     while ((ch = fgetc(message_file)) && ch != '\n')
     {
-        int scan_result = fscanf(key_file, "%d%d %c", &x_pos, &y_pos, &color);
+        unsigned char bits = char_to_bits(ch);
 
-        if (scan_result != scan_required)
+        for (int i = 0; i < bits_count; i++)
         {
-            fclose(message_file);
-            fclose(key_file);
+            int scan_result = fscanf(key_file, "%d%d %c", &x_pos, &y_pos, &color);
 
-            return READING_ERROR;
-        }
+            if (scan_result != scan_required)
+            {
+                fclose(message_file);
+                fclose(key_file);
 
-        int insert_ok = insert_char(bmp, x_pos, y_pos, color, ch);
+                return READING_ERROR;
+            }
 
-        if (!insert_ok)
-        {
-            fclose(message_file);
-            fclose(key_file);
+            int insert_ok = insert_bit(bmp, x_pos, y_pos, color, (bits >> i) * get_mask);
 
-            return INSERT_ERROR;
+            if (!insert_ok)
+            {
+                fclose(message_file);
+                fclose(key_file);
+
+                return INSERT_ERROR;
+            }
         }
     }
 
@@ -149,11 +152,13 @@ int extract_message(bmp_file *bmp, const char *key_filename, const char *message
 
     int x_pos, y_pos;
     char color;
-    char ch;
+    unsigned char bits = 0;
+    unsigned char bit;
+    int count = 0;
 
     while (fscanf(key_file, "%d%d %c", &x_pos, &y_pos, &color) == scan_required)
     {
-        int extract_ok = extract_char(bmp, x_pos, y_pos, color, &ch);
+        int extract_ok = extract_bit(bmp, x_pos, y_pos, color, &bit);
 
         if (!extract_ok)
         {
@@ -163,7 +168,14 @@ int extract_message(bmp_file *bmp, const char *key_filename, const char *message
             return EXTRACT_ERROR;
         }
 
-        fprintf(message_file, "%c", ch);
+        bits = bits | (bit << count);
+        count++;
+
+        if (count % 5 == 0)
+        {
+            fprintf(message_file, "%c", bits_to_char(bits));
+            count = 0;
+        }
     }
 
     fclose(message_file);
