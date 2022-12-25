@@ -179,6 +179,7 @@ int extract_message(bmp_file *bmp, const char *key_filename, const char *message
         }
     }
 
+    fprintf(message_file, "\n");
     fclose(message_file);
     fclose(key_file);
 
