@@ -175,6 +175,7 @@ int extract_message(bmp_file *bmp, const char *key_filename, const char *message
         {
             fprintf(message_file, "%c", bits_to_char(bits));
             count = 0;
+            bits = 0;
         }
     }
 
