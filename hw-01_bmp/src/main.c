@@ -139,6 +139,8 @@ int main(int argc, char *argv[])
             close_bmp(&image);
             return 1;
         }
+
+        close_bmp(&image);
     }
     else if (strcmp(function, "extract") == 0)
     {
