@@ -171,7 +171,7 @@ int extract_message(bmp_file *bmp, const char *key_filename, const char *message
         bits = bits | (bit << count);
         count++;
 
-        if (count % 5 == 0)
+        if (count % bits_count == 0)
         {
             fprintf(message_file, "%c", bits_to_char(bits));
             count = 0;
