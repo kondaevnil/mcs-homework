@@ -10,4 +10,4 @@ include_directories(include)
 add_executable(hw-01_bmp
         include/bmp.h
         src/bmp.c
-        src/main.c)
+        src/main.c src/stego.c)

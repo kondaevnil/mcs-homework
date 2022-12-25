@@ -53,5 +53,7 @@ void close_bmp(bmp_file *bmp);
 #define NE_ARGS_ERROR      6
 #define BOARDER_ERROR      7
 #define OPERATION_ERROR    8
+#define INSERT_ERROR       9
+#define EXTRACT_ERROR     10
 
 #endif
