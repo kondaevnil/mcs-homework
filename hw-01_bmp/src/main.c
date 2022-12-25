@@ -176,3 +176,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+// insert ../../../small-one.bmp ../../../t.bmp ../../../key.txt ../../../test.txt
+// extract ../../../t.bmp ../../../key.txt ../../../res.txt

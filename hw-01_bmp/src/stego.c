@@ -4,6 +4,7 @@
 const unsigned char set_mask = 0xff - 0x1f;
 const unsigned char get_mask = 0x1f;
 const int scan_required = 3;
+const int color_count = 3;
 
 static unsigned char char_to_bits(char ch)
 {
@@ -70,8 +71,8 @@ static int insert_char(bmp_file *bmp, int x, int y, char color, char ch)
     if (x < 0 || bmp->info_header.width <= x || y < 0 || bmp->info_header.height <= y || color == -1 || !check_char(ch))
         return 0;
 
-    bmp->bytes[y * bmp->info_header.width + x + color_pos] &= set_mask;
-    bmp->bytes[y * bmp->info_header.width + x + color_pos] |= char_to_bits(ch);
+    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] &= set_mask;
+    bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] |= char_to_bits(ch);
 
     return 1;
 }
@@ -83,10 +84,10 @@ static int extract_char(bmp_file *bmp, int x, int y, char color, char *ch)
     if (x < 0 || bmp->info_header.width <= x || y < 0 || bmp->info_header.height <= y || color == -1)
         return 0;
 
-    if (!check_bits(bmp->bytes[y * bmp->info_header.width + x + color_pos] & get_mask))
+    if (!check_bits(bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] & get_mask))
         return 0;
 
-    *ch = bits_to_char(bmp->bytes[y * bmp->info_header.width + x + color_pos] & get_mask);
+    *ch = bits_to_char(bmp->bytes[y * bmp->info_header.width * color_count + x * color_count + color_pos] & get_mask);
 
     return 1;
 }
