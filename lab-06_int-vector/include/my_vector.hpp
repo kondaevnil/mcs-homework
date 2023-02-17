@@ -12,8 +12,8 @@ public:
     void set(std::size_t index, int value);
     int get(std::size_t index);
 
-    std::size_t size();
-    std::size_t capacity();
+    std::size_t size() const;
+    std::size_t capacity() const;
 
     void reserve(std::size_t new_capacity);
     void resize(std::size_t new_size);
@@ -24,7 +24,7 @@ public:
 
 private:
     std::size_t _size, _capacity;
-    int * _data;
+    int *_data;
 };
 
 #endif
