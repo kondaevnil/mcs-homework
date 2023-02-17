@@ -97,7 +97,8 @@ void MyVector::insert(std::size_t index, int value)
     if (_size >= _capacity)
         reserve(_capacity * 2);
 
-    memmove(_data + index + 1, _data + index, sizeof(int) * (_size - index));
+    if (index != _size - 1)
+        memmove(_data + index + 1, _data + index, sizeof(int) * (_size - index));
 
     _data[index] = value;
     _size++;
@@ -108,6 +109,8 @@ void MyVector::erase(std::size_t index)
     if (index >= _size)
         return;
 
-    memmove(_data + index, _data + index + 1, sizeof(int) * (_size - index - 1));
+    if (index != _size - 1)
+        memmove(_data + index, _data + index + 1, sizeof(int) * (_size - index - 1));
+
     _size--;
 }
