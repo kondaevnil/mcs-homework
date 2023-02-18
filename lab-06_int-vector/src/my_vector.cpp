@@ -1,5 +1,6 @@
 #include "my_vector.hpp"
 #include <cstring>
+#include <algorithm>
 
 MyVector::MyVector()
 {
@@ -13,6 +14,30 @@ MyVector::MyVector(std::size_t init_capacity)
     _data = new int[init_capacity];
     _capacity = init_capacity;
     _size = 0;
+}
+
+MyVector::MyVector(MyVector &vector)
+{
+    _data = new int[vector._capacity];
+    _size = vector._size;
+    std::copy(vector._data, vector._data + vector._size, _data);
+}
+
+MyVector &MyVector::operator=(MyVector const &vector)
+{
+    if (this != &vector)
+    {
+        if (_capacity != vector._capacity)
+        {
+            delete[] _data;
+            _data = new int[vector._capacity];
+            _size = vector._size;
+        }
+
+        std::copy(vector._data, vector._data + vector._size, _data);
+    }
+
+    return *this;
 }
 
 MyVector::~MyVector()
@@ -53,7 +78,7 @@ void MyVector::reserve(std::size_t new_capacity)
 
     int *new_data = new int[new_capacity];
     _capacity = new_capacity;
-    memcpy(new_data, _data, sizeof(int) * _size);
+    std::copy(_data, _data + _size, new_data);
 
     delete[] _data;
     _data = new_data;
@@ -71,7 +96,7 @@ void MyVector::resize(std::size_t new_size)
     {
         _capacity = new_size >= _capacity * 2 ? new_size : _capacity * 2;
         int *new_data = new int[_capacity];
-        memcpy(new_data, _data, sizeof(int) * _size);
+        std::copy(_data, _data + _size, new_data);
 
         delete[] _data;
         _data = new_data;
@@ -98,7 +123,7 @@ void MyVector::insert(std::size_t index, int value)
         reserve(_capacity * 2);
 
     if (index != _size - 1)
-        memmove(_data + index + 1, _data + index, sizeof(int) * (_size - index));
+        std::copy_backward(_data + index, _data + _size, _data + _size + 1);
 
     _data[index] = value;
     _size++;
@@ -110,7 +135,7 @@ void MyVector::erase(std::size_t index)
         return;
 
     if (index != _size - 1)
-        memmove(_data + index, _data + index + 1, sizeof(int) * (_size - index - 1));
+        std::copy(_data + index + 1, _data + _size, _data + index);
 
     _size--;
 }
