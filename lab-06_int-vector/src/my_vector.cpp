@@ -1,6 +1,7 @@
 #include "my_vector.hpp"
 #include <cstring>
 #include <algorithm>
+#include <stdexcept>
 
 MyVector::MyVector()
 {
