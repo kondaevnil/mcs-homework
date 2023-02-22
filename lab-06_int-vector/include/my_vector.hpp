@@ -7,7 +7,7 @@ class MyVector {
 public:
     MyVector();
     MyVector(std::size_t init_capacity);
-    MyVector(MyVector &vector);
+    MyVector(MyVector const &vector);
     ~MyVector();
 
     void set(std::size_t index, int value);

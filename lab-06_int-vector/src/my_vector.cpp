@@ -11,14 +11,15 @@ MyVector::MyVector()
 
 MyVector::MyVector(std::size_t init_capacity)
 {
-    _data = new int[init_capacity];
+    _data = new int[std::max(init_capacity, (std::size_t)2)];
     _capacity = init_capacity;
     _size = 0;
 }
 
-MyVector::MyVector(MyVector &vector)
+MyVector::MyVector(MyVector const &vector)
 {
     _data = new int[vector._capacity];
+    _capacity = vector._capacity;
     _size = vector._size;
     std::copy(vector._data, vector._data + vector._size, _data);
 }
@@ -30,6 +31,7 @@ MyVector &MyVector::operator=(MyVector const &vector)
         if (_capacity != vector._capacity)
         {
             delete[] _data;
+            _capacity = vector._capacity;
             _data = new int[vector._capacity];
             _size = vector._size;
         }
@@ -66,7 +68,7 @@ void MyVector::set(std::size_t index, int value)
 int MyVector::get(std::size_t index)
 {
     if (index >= _size)
-        return 0;
+        throw std::runtime_error("Index out of range");
 
     return _data[index];
 }
@@ -94,7 +96,7 @@ void MyVector::resize(std::size_t new_size)
 
     if (new_size > _capacity)
     {
-        _capacity = new_size >= _capacity * 2 ? new_size : _capacity * 2;
+        _capacity = new_size;
         int *new_data = new int[_capacity];
         std::copy(_data, _data + _size, new_data);
 
@@ -117,10 +119,21 @@ void MyVector::push_back(int value)
 void MyVector::insert(std::size_t index, int value)
 {
     if (index > _size)
-        return;
+        throw std::runtime_error("Index out of range");
 
     if (_size >= _capacity)
-        reserve(_capacity * 2);
+    {
+        int *new_data = new int[_capacity * 2];
+
+        std::copy(_data, _data + index, new_data);
+        new_data[index] = value;
+        _size++;
+
+        if (index != _size - 1)
+            std::copy(_data + index + 1, _data + _size, new_data + index + 1);
+
+        return;
+    }
 
     if (index != _size - 1)
         std::copy_backward(_data + index, _data + _size, _data + _size + 1);
@@ -132,7 +145,7 @@ void MyVector::insert(std::size_t index, int value)
 void MyVector::erase(std::size_t index)
 {
     if (index >= _size)
-        return;
+        throw std::runtime_error("Index out of range");
 
     if (index != _size - 1)
         std::copy(_data + index + 1, _data + _size, _data + index);
