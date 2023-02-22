@@ -125,13 +125,14 @@ void MyVector::insert(std::size_t index, int value)
     if (_size >= _capacity)
     {
         int *new_data = new int[_capacity * 2];
+        _capacity = _capacity * 2;
 
         std::copy(_data, _data + index, new_data);
         new_data[index] = value;
-        _size++;
 
         if (index != _size - 1)
             std::copy(_data + index, _data + _size, new_data + index + 1);
+        _size++;
 
         delete[] _data;
         _data = new_data;
