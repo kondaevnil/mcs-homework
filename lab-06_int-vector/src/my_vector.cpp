@@ -131,7 +131,7 @@ void MyVector::insert(std::size_t index, int value)
         _size++;
 
         if (index != _size - 1)
-            std::copy(_data + index + 1, _data + _size, new_data + index + 1);
+            std::copy(_data + index, _data + _size, new_data + index + 1);
 
         return;
     }
