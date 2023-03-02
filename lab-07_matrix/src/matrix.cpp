@@ -55,8 +55,6 @@ void Matrix::print(FILE *f) const
     {
         for (int j = 0; j < _cols; j++)
             fprintf(f, "%i%c", _data[i][j], j == _cols - 1 ? '\n' : ' ');
-
-        fprintf(f, "\n");
     }
 }
 
