@@ -76,6 +76,7 @@ Matrix::Matrix(Matrix &&m) noexcept
     _rows = m._rows;
     _cols = m._cols;
     _data = m._data;
+    m._data = nullptr;
 }
 
 Matrix::~Matrix()
@@ -126,6 +127,7 @@ Matrix & Matrix::operator=(Matrix &&m) noexcept
         _rows = m._rows;
         _cols = m._cols;
         _data = m._data;
+        m._data = nullptr;
     }
 
     return *this;
