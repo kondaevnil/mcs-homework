@@ -76,7 +76,6 @@ Matrix::Matrix(Matrix &&m) noexcept
     _rows = m._rows;
     _cols = m._cols;
     _data = m._data;
-    m._data = nullptr;
 }
 
 Matrix::~Matrix()
@@ -126,6 +125,7 @@ Matrix & Matrix::operator=(Matrix &&m) noexcept
 
         _rows = m._rows;
         _cols = m._cols;
+        _data = m._data;
     }
 
     return *this;
@@ -226,7 +226,6 @@ Matrix & Matrix::operator*=(Matrix &m)
         for (int j = 0; j < m._cols; j++)
             for (int k = 0; k < _cols; k++)
                 tmp._data[i][j] += _data[i][k] * m._data[k][j];
-
-    *this = tmp;
-    return *this;
+    
+    return *this = std::move(tmp);
 }
