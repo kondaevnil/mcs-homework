@@ -126,8 +126,6 @@ Matrix & Matrix::operator=(Matrix &&m) noexcept
 
         _rows = m._rows;
         _cols = m._cols;
-        _data = m._data;
-        m._data = nullptr;
     }
 
     return *this;
@@ -190,7 +188,7 @@ Matrix Matrix::operator*(Matrix &m) const
     for (int i = 0; i < _rows; i++)
         for (int j = 0; j < m._cols; j++)
             for (int k = 0; k < _cols; k++)
-                tmp._data[i][j] = _data[i][k] * m._data[k][j];
+                tmp._data[i][j] += _data[i][k] * m._data[k][j];
 
     return tmp;
 }
@@ -227,7 +225,8 @@ Matrix & Matrix::operator*=(Matrix &m)
     for (int i = 0; i < _rows; i++)
         for (int j = 0; j < m._cols; j++)
             for (int k = 0; k < _cols; k++)
-                tmp._data[i][j] = _data[i][k] * m._data[k][j];
+                tmp._data[i][j] += _data[i][k] * m._data[k][j];
 
-    return *this = std::move(tmp);
+    *this = tmp;
+    return *this;
 }
