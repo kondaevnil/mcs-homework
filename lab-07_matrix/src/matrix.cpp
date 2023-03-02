@@ -73,9 +73,9 @@ Matrix::Matrix(const Matrix &m) : _cols(m._cols), _rows(m._rows)
 
 Matrix::Matrix(Matrix &&m) noexcept
 {
-    _rows = m._rows;
-    _cols = m._cols;
-    _data = m._data;
+    std::swap(_data, m._data);
+    std::swap(_rows, m._rows);
+    std::swap(_cols, m._cols);
 }
 
 Matrix::~Matrix()
@@ -119,14 +119,9 @@ Matrix & Matrix::operator=(Matrix &&m) noexcept
 {
     if (*this != m)
     {
-        for (int i = 0; i < _rows; i++)
-            delete[] _data[i];
-        delete[] _data;
-
-        _rows = m._rows;
-        _cols = m._cols;
-        _data = m._data;
-        m._data = nullptr;
+        std::swap(_data, m._data);
+        std::swap(_rows, m._rows);
+        std::swap(_cols, m._cols);
     }
 
     return *this;
