@@ -227,5 +227,6 @@ Matrix & Matrix::operator*=(Matrix &m)
             for (int k = 0; k < _cols; k++)
                 tmp._data[i][j] = _data[i][k] * m._data[k][j];
 
-    return *this = std::move(tmp);
+    *this = tmp;
+    return *this;
 }
