@@ -73,6 +73,10 @@ Matrix::Matrix(const Matrix &m) : _cols(m._cols), _rows(m._rows)
 
 Matrix::Matrix(Matrix &&m) noexcept
 {
+    _data = nullptr;
+    _rows = 0;
+    _cols = 0;
+
     std::swap(_data, m._data);
     std::swap(_rows, m._rows);
     std::swap(_cols, m._cols);
