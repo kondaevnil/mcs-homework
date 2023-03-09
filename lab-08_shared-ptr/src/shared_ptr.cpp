@@ -47,11 +47,12 @@ shared_ptr::shared_ptr(Matrix *obj)
 
 shared_ptr::shared_ptr(const shared_ptr &other) noexcept
 {
-    other.storage_->incr();
+    if (other.storage_ != nullptr)
+        other.storage_->incr();
     storage_ = other.storage_;
 }
 
-shared_ptr &shared_ptr::operator=(shared_ptr other)
+shared_ptr & shared_ptr::operator=(shared_ptr other)
 {
     if (other.storage_ == storage_)
         return *this;
