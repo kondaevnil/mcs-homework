@@ -15,22 +15,21 @@ Matrix * shared_ptr::ptr() const noexcept
 
 void shared_ptr::reset(Matrix *obj)
 {
-    auto tmp_storage = new Storage(obj);
+    Storage *tmp_storage;
 
-    if (storage_ == nullptr)
-    {
-        storage_ = tmp_storage;
-        return;
-    }
-
-    if (storage_->getCounter() == 1)
-    {
-        delete storage_;
-        storage_ = tmp_storage;
-        return;
-    }
+    if (obj == nullptr)
+        tmp_storage = nullptr;
     else
-        storage_->decr();
+        tmp_storage = new Storage(obj);
+
+
+    if (storage_ != nullptr)
+    {
+        if (storage_->getCounter() == 1)
+            delete storage_;
+        else
+            storage_->decr();
+    }
 
     storage_ = tmp_storage;
 }
