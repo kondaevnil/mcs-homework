@@ -29,8 +29,9 @@ void shared_ptr::reset(Matrix *obj)
         storage_ = tmp_storage;
         return;
     }
+    else
+        storage_->decr();
 
-    storage_->decr();
     storage_ = tmp_storage;
 }
 
