@@ -91,7 +91,7 @@ Matrix * shared_ptr::operator->() const
     if (storage_ == nullptr)
         throw std::runtime_error("Null pointer access");
 
-    return ptr()
+    return ptr();
 }
 
 Matrix & shared_ptr::operator*() const
