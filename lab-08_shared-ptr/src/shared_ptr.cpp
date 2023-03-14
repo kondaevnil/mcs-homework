@@ -1,4 +1,5 @@
 #include "shared_ptr.hpp"
+#include <stdexcept>
 
 bool shared_ptr::isNull() const noexcept
 {
@@ -16,6 +17,9 @@ Matrix * shared_ptr::ptr() const noexcept
 void shared_ptr::reset(Matrix *obj)
 {
     Storage *tmp_storage;
+
+    if (obj == ptr())
+        return;
 
     if (obj == nullptr)
         tmp_storage = nullptr;
@@ -84,11 +88,17 @@ shared_ptr::~shared_ptr()
 
 Matrix * shared_ptr::operator->() const
 {
-    return ptr();
+    if (storage_ == nullptr)
+        throw std::runtime_error("Null pointer access");
+
+    return ptr()
 }
 
 Matrix & shared_ptr::operator*() const
 {
+    if (storage_ == nullptr)
+        throw std::runtime_error("Null pointer access");
+
     return *ptr();
 }
 

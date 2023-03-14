@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "matrix.hpp"
+#include <stdexcept>
 
 Matrix::Matrix(std::size_t r, std::size_t c)
 {
