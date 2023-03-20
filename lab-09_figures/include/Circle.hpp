@@ -2,6 +2,7 @@
 
 #include "Figure.hpp"
 #include <string>
+#include <stdexcept>
 
 class Circle : public Figure {
 public:
