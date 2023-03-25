@@ -15,6 +15,9 @@ bool Rectangle::is_inside(int x, int y) const
 
 void Rectangle::zoom(int factor)
 {
+    if (factor <= 0)
+        throw std::invalid_argument("Factor should be greater than zero.");
+
     height_ *= factor;
     width_ *= factor;
 }

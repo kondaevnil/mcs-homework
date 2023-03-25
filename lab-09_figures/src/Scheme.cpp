@@ -68,9 +68,6 @@ void Scheme::print_all_figures() const
 
 void Scheme::zoom_figure(int id, int factor)
 {
-    if (factor <= 0)
-        throw std::invalid_argument("Factor should be greater than zero.");
-
     int index = find_id(id);
 
     if (index == size_)

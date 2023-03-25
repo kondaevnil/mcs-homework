@@ -24,5 +24,8 @@ bool Circle::is_inside(int x, int y) const
 
 void Circle::zoom(int factor)
 {
+    if (factor <= 0)
+        throw std::invalid_argument("Factor should be greater than zero.");
+
     radius_ *= factor;
 }
