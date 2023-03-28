@@ -6,6 +6,7 @@
 #include <vector>
 #include <ostream>
 #include <istream>
+#include <memory>
 
 namespace Emlpoy
 {
