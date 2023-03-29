@@ -1,9 +1,10 @@
 #include "employees.h"
 #include <iostream>
+#include <memory>
 
 int main()
 {
-    auto employee_array = new Emlpoy::EmployeesArray();
+    auto employee_array = std::make_shared<Emlpoy::EmployeesArray>(Emlpoy::EmployeesArray());
     std::string input;
     bool stop = false;
 
