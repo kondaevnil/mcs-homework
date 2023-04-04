@@ -7,7 +7,7 @@
 
 namespace containers
 {
-    static const size_t my_vector_default_capacity = 4;
+    static const size_t my_vector_default_capacity = 1;
 
     template<typename T>
     std::ostream & operator<<(std::ostream &os, const my_vector<T> &vec)
@@ -110,7 +110,9 @@ namespace containers
             return;
 
         T *new_arr = reinterpret_cast<T *>(new char[sizeof(T) * n]);
-        capacity_ = n;
+
+        while (capacity_ < n)
+            capacity_ *= 2;
 
         for (std::size_t i = 0; i < size_; i++)
         {
