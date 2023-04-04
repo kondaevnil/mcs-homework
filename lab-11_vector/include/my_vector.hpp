@@ -2,39 +2,43 @@
 #define MY_VECTOR_H_
 
 #include <cstddef>
+#include <ostream>
 
-namespace containers {
+namespace containers
+{
+    template<typename T>
+    class my_vector
+    {
+    public:
+        my_vector();
+        explicit my_vector(std::size_t n);
+        my_vector(my_vector const &other);
+        my_vector & operator=(my_vector other);
+        ~my_vector();
 
-template<typename T>
-class my_vector {
-public:
-    my_vector();
-    my_vector(std::size_t n);
-    my_vector(my_vector other);
-    my_vector operator=(my_vector other);
-    ~my_vector();
+        std::size_t size();
+        std::size_t capacity();
+        bool empty();
 
-    std::size_t size();
-    std::size_t capacity();
-    bool empty();
+        void resize(std::size_t n);
+        void reserve(std::size_t n);
 
-    void resize(std::size_t n);
-    void reserve(std::size_t n);
+        T & operator[](std::size_t index);
 
-    ?? operator[](std::size_t index);
+        void push_back(T t);
+        void pop_back();
+        void clear();
 
-    void push_back(T t);
-    void pop_back();
-    void clear();
+        template<typename U>
+        friend std::ostream & operator<<(std::ostream &os, my_vector<U> &vec);
 
-private:
-    size_t capacity_;
-    size_t size_;
-    T* array_;
-};
-
+    private:
+        size_t capacity_;
+        size_t size_;
+        T* array_;
+    };
 }
 
-#include "my_vector_impl.h"
+#include "my_vector_impl.hpp"
 
 #endif  // MY_VECTOR_H_
