@@ -67,19 +67,19 @@ namespace containers
     }
 
     template<typename T>
-    std::size_t my_vector<T>::size()
+    std::size_t my_vector<T>::size() const
     {
         return size_;
     }
 
     template<typename T>
-    bool my_vector<T>::empty()
+    bool my_vector<T>::empty() const
     {
         return size_ == 0;
     }
 
     template<typename T>
-    std::size_t my_vector<T>::capacity()
+    std::size_t my_vector<T>::capacity() const
     {
         return capacity_;
     }

@@ -16,9 +16,9 @@ namespace containers
         my_vector & operator=(my_vector other);
         ~my_vector();
 
-        std::size_t size();
-        std::size_t capacity();
-        bool empty();
+        std::size_t size() const;
+        std::size_t capacity() const;
+        bool empty() const;
 
         void resize(std::size_t n);
         void reserve(std::size_t n);
