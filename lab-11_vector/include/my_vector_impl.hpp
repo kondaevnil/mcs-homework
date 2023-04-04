@@ -33,7 +33,7 @@ namespace containers
 
         while (capacity_ < n)
             capacity_ *= 2;
-        
+
         size_ = n;
         array_ = reinterpret_cast<T *>(new char[sizeof(T) * capacity_]);
 
@@ -91,7 +91,7 @@ namespace containers
     template<typename T>
     void my_vector<T>::resize(std::size_t n)
     {
-        if (size_ <= n)
+        if (n <= size_)
         {
             for (std::size_t i = n; i < size_; i++)
                 array_[i].~T();
