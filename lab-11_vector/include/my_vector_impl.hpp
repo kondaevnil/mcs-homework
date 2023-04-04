@@ -10,7 +10,7 @@ namespace containers
     static const size_t my_vector_default_capacity = 4;
 
     template<typename T>
-    std::ostream & operator<<(std::ostream &os, my_vector<T> &vec)
+    std::ostream & operator<<(std::ostream &os, const my_vector<T> &vec)
     {
         for (std::size_t i = 0; i < vec.size(); i++)
             os << vec.array_[i] << (i == vec.size() - 1 ? '\n' : ' ');
@@ -124,7 +124,7 @@ namespace containers
     }
 
     template<typename T>
-    T & my_vector<T>::operator[](std::size_t index)
+    T & my_vector<T>::operator[](std::size_t index) const
     {
         if (index >= size_)
             throw std::runtime_error("Index out of range.");

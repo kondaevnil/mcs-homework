@@ -23,14 +23,14 @@ namespace containers
         void resize(std::size_t n);
         void reserve(std::size_t n);
 
-        T & operator[](std::size_t index);
+        T & operator[](std::size_t index) const;
 
         void push_back(T t);
         void pop_back();
         void clear();
 
         template<typename U>
-        friend std::ostream & operator<<(std::ostream &os, my_vector<U> &vec);
+        friend std::ostream & operator<<(std::ostream &os, const my_vector<U> &vec);
 
     private:
         size_t capacity_;
