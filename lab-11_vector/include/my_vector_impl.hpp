@@ -13,7 +13,11 @@ namespace containers
     std::ostream & operator<<(std::ostream &os, const my_vector<T> &vec)
     {
         for (std::size_t i = 0; i < vec.size(); i++)
-            os << vec.array_[i] << (i == vec.size() - 1 ? "" : ' ');
+        {
+            os << vec.array_[i];
+            if (i < vec.size() - 1)
+                os << " ";
+        }
 
         return os;
     }
