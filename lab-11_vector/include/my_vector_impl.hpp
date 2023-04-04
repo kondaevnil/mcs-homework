@@ -29,7 +29,11 @@ namespace containers
     template<typename T>
     my_vector<T>::my_vector(std::size_t n)
     {
-        capacity_ = std::max(n, my_vector_default_capacity);
+        capacity_ = my_vector_default_capacity;
+
+        while (capacity_ < n)
+            capacity_ *= 2;
+        
         size_ = n;
         array_ = reinterpret_cast<T *>(new char[sizeof(T) * capacity_]);
 
