@@ -3,6 +3,7 @@
 #include "my_vector.h"
 
 #include <cstring>
+#include <cassert>
 
 namespace product
 {
