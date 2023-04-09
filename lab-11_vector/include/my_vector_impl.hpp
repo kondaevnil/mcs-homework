@@ -50,7 +50,8 @@ namespace containers
     {
         for (int i = 0; i < size_; i++)
             array_[i].~T();
-        operator delete[](array_);
+
+        delete[] reinterpret_cast<char *>(array_);
     }
 
     template<typename T>
@@ -117,10 +118,14 @@ namespace containers
         if (n <= capacity_)
             return;
 
-        T *new_arr = reinterpret_cast<T *>(new char[sizeof(T) * n]);
+        std::size_t new_cap = capacity_;
 
-        while (capacity_ < n)
-            capacity_ *= 2;
+        while (new_cap < n)
+            new_cap *= 2;
+
+        T *new_arr = reinterpret_cast<T *>(new char[sizeof(T) * new_cap]);
+
+        capacity_ = new_cap;
 
         for (std::size_t i = 0; i < size_; i++)
         {
@@ -128,7 +133,7 @@ namespace containers
             array_[i].~T();
         }
 
-        operator delete[](array_);
+        delete[] reinterpret_cast<char *>(array_);
 
         array_ = new_arr;
     }
@@ -144,7 +149,7 @@ namespace containers
 
 
     template<typename T>
-    void my_vector<T>::push_back(T t)
+    void my_vector<T>::push_back(const T &t)
     {
         if (size_ >= capacity_)
             reserve(capacity_ * 2);
