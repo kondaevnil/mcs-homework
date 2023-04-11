@@ -76,7 +76,7 @@ int main()
             }
             catch (MatrixException &m)
             {
-                std::cout << m.what();
+                std::cout << m.what() << "\n";
             }
         }
         else if (input == "exit")
@@ -85,19 +85,3 @@ int main()
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
