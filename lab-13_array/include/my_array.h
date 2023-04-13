@@ -16,7 +16,7 @@ namespace utils
 
     bool get_bit(std::byte byte, std::size_t pos)
     {
-        return (byte & (static_cast<std::byte>(1) << pos)) == static_cast<std::byte>(1);
+        return static_cast<bool>(byte & static_cast<std::byte>(1 << pos));
     }
 }
 
