@@ -58,7 +58,7 @@ namespace hw2::huffman
             pq.emplace(new node(std::move(first), std::move(second)));
         }
 
-        if (root != nullptr)
+        if (!pq.empty())
         {
             root = pq.top();
             build_codes(root, "");
@@ -97,7 +97,7 @@ namespace hw2::huffman
 
     void archiver::archive(const std::string &in_file, const std::string &out_file)
     {
-        std::ifstream in(in_file, std::ios::in);
+        std::ifstream in(in_file, std::ios::in | std::ios::binary);
 
         if (!in.is_open())
             throw std::invalid_argument("File doesn't exist.");
