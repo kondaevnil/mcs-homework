@@ -72,8 +72,16 @@ namespace hw2::huffman
 
         if (current->left == nullptr && current->right == nullptr)
         {
-            char_code[current->value_] = code;
-            code_char[code] = current->value_;
+            if (current == root)
+            {
+                char_code[current->value_] = "0";
+                code_char["0"] = current->value_;
+            }
+            else
+            {
+                char_code[current->value_] = code;
+                code_char[code] = current->value_;
+            }
             return;
         }
         build_codes(current->left, code + "0");
