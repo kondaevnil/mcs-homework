@@ -113,8 +113,6 @@ namespace hw2::huffman
         }
         in.close();
 
-        std::cout << data.size() << std::endl;
-
         occurrence_table occ_table(data);
         tree huff_tree(occ_table);
 
@@ -139,14 +137,14 @@ namespace hw2::huffman
             additional_data_size += 1 + sizeof(std::size_t);
         }
 
-        std::cout << additional_data_size << std::endl;
-
         bw.flush();
         auto bytes = bw.get_bytes();
         for (auto byte: bytes)
             out.write(reinterpret_cast<char *>(&byte), 1);
 
+        std::cout << data.size() << std::endl;
         std::cout << bw.get_bytes().size() << std::endl;
+        std::cout << additional_data_size << std::endl;
 
         out.close();
     }
@@ -233,12 +231,11 @@ namespace hw2::huffman
             byte = ch_tmp;
         }
 
-        std::cout << read_data << std::endl;
-
         std::ofstream out(out_file, std::ios::out);
         for (auto data_byte: encoded)
             out.write(&data_byte, 1);
 
+        std::cout << read_data << std::endl;
         std::cout << encoded.size() << std::endl;
         std::cout << additional_data_size << std::endl;
 
