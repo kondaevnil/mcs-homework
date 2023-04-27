@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "bit_manip.h"
+#include <unordered_map>
 
 namespace hw2::huffman
 {
@@ -45,7 +46,8 @@ namespace hw2::huffman
         using nodeptr = typename node::nodeptr;
         nodeptr root = nullptr;
         std::map<char, std::string> char_code;
-        std::map<std::string, char> code_char;
+        //std::map<std::string, char> code_char;
+        std::unordered_map<std::string, char> code_char;
 
         void build_codes(const nodeptr &current, const std::string &code);
 
@@ -53,7 +55,8 @@ namespace hw2::huffman
         explicit tree(const occurrence_table &table);
         std::string & get_code(char ch);
         [[nodiscard]] std::uint32_t get_alphabet_size() const;
-        [[nodiscard]] const std::map<std::string, char> & get_code_char() const;
+        //[[nodiscard]] const std::map<std::string, char> & get_code_char() const;
+        [[nodiscard]] const std::unordered_map<std::string, char> & get_code_char() const;
     };
 }
 

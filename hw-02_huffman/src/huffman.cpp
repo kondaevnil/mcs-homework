@@ -98,7 +98,12 @@ namespace hw2::huffman
         return char_code.size();
     }
 
-    const std::map<std::string, char> & tree::get_code_char() const
+//    const std::map<std::string, char> & tree::get_code_char() const
+//    {
+//        return code_char;
+//    }
+
+    const std::unordered_map<std::string, char> & tree::get_code_char() const
     {
         return code_char;
     }
