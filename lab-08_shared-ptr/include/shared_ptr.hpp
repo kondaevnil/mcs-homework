@@ -8,44 +8,44 @@ public:
 	 * Получает объект по сырому указателю во владение.
 	 * Передача того же указателя во владение кому либо ещё — неопределённое поведение.
 	 */
-    shared_ptr(Matrix* obj = nullptr);
+    explicit shared_ptr(Matrix *obj = nullptr);
 	/**
 	 * Строит копию умного указателя, разделяя владение с оригиналом.
 	 */
-    shared_ptr(const shared_ptr& other);
+    shared_ptr(const shared_ptr &other) noexcept;
 	/**
 	 * Присваивает умному указателю новое значение, корректно меняя владение с одного объекта на другой.
 	 */
-    shared_ptr& operator=(shared_ptr other);
+    shared_ptr & operator=(shared_ptr other);
     ~shared_ptr();
 
 	/**
 	 * Возвращает сырой указатель для несовместимого кода.
 	 */
-    Matrix* ptr() const;
+    [[nodiscard]] Matrix * ptr() const noexcept;
 	/**
 	 * Проверка на nullptr.
 	 */
-    bool isNull() const;
+    [[nodiscard]] bool isNull() const noexcept;
 	/**
 	 * Присваивает умному указателю новый для владения.
 	 */
-    void reset(Matrix* obj = nullptr);
+    void reset(Matrix *obj = nullptr);
 
-    Matrix* operator->() const;
-    Matrix& operator*() const;
+    Matrix * operator->() const;
+    Matrix & operator*() const;
 
 private:
     class Storage {
     public:
-        Storage(Matrix* mtx);
+        explicit Storage(Matrix* mtx);
         ~Storage();
 
         void incr();
         void decr();
 
-        int getCounter() const;
-        Matrix* getObject() const;
+        [[nodiscard]] int getCounter() const;
+        [[nodiscard]] Matrix* getObject() const;
 
     private:
         Matrix *data_;
