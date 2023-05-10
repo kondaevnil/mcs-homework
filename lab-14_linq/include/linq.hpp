@@ -89,6 +89,7 @@ namespace linq
                 {
                     *it = std::move(operator*());
                     ++it;
+                    operator++();
                 }
             }
         };
