@@ -27,7 +27,7 @@ namespace linq
         public:
             virtual const T & operator*() = 0; // Получает текущий элемент.
             virtual void operator++() = 0;  // Переход к следующему элементу
-            virtual operator bool() const = 0;  // Возвращает true, если есть текущий элемент
+            virtual operator bool() = 0;  // Возвращает true, если есть текущий элемент
 
             auto drop(int count)
             {
@@ -101,7 +101,7 @@ namespace linq
             {
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return begin_ != end_;
             }
@@ -132,7 +132,7 @@ namespace linq
                 }
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return parent_.operator bool();
             }
@@ -159,7 +159,7 @@ namespace linq
             {
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return parent_.operator bool() && count_ > 0;
             }
@@ -188,7 +188,7 @@ namespace linq
             {
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return parent_.operator bool();
             }
@@ -225,7 +225,7 @@ namespace linq
             {
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return parent_.operator bool() && !end_ && (end_ = predicate_(*parent_));
             }
@@ -254,7 +254,7 @@ namespace linq
             {
             }
 
-            operator bool() const override
+            operator bool() override
             {
                 return parent_.operator bool();
             }
