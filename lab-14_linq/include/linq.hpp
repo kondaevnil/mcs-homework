@@ -236,7 +236,7 @@ namespace linq
             {
                 if (end_ || predicate_(*parent_))
                 {
-                    end_ = false;
+                    end_ = true;
                     return;
                 }
                 ++parent_;
