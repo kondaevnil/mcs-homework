@@ -59,7 +59,7 @@ namespace linq
 
             auto until_eq(T value)
             {
-                const auto func = [&value](T a){ return a != value; };
+                const auto func = [&value](T a){ return a == value; };
                 return until_enumerator<T, decltype(func)>(*this, func);
             }
 
@@ -87,7 +87,7 @@ namespace linq
             {
                 while (operator bool())
                 {
-                    *it = operator*();
+                    *it = std::move(operator*());
                     ++it;
                 }
             }
@@ -221,13 +221,15 @@ namespace linq
         class until_enumerator : public enumerator<T>
         {
         public:
-            until_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), predicate_(predicate), end_(false)
+            until_enumerator(enumerator<T> &parent, F predicate) : parent_(parent)
             {
+                while (parent_.operator bool() && !predicate(*parent_))
+                    ++parent_;
             }
 
             operator bool() override
             {
-                return parent_.operator bool() && !end_ && (end_ = predicate_(*parent_));
+                return parent_.operator bool();
             }
 
             void operator++() override
@@ -242,8 +244,6 @@ namespace linq
 
         private:
             enumerator<T> &parent_;
-            F predicate_;
-            bool end_;
         };
 
         template<typename T, typename F>
