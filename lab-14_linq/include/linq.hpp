@@ -185,7 +185,7 @@ namespace linq
         class select_enumerator : public enumerator<T>
         {
         public:
-            select_enumerator(enumerator<U> &parent, F func) : parent_(parent), func_(func), next_(true)
+            select_enumerator(enumerator<U> &parent, F func) : parent_(parent), func_(std::move(func)), next_(true)
             {
             }
 
@@ -222,7 +222,7 @@ namespace linq
         class until_enumerator : public enumerator<T>
         {
         public:
-            until_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), end_(false), predicate_(predicate), cached_(false)
+            until_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), end_(false), predicate_(std::move(predicate)), cached_(false)
             {
             }
 
@@ -260,7 +260,7 @@ namespace linq
         class where_enumerator : public enumerator<T>
         {
         public:
-            where_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), predicate_(predicate)
+            where_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), predicate_(std::move(predicate))
             {
                 while (parent_.operator bool() && !predicate_(*parent_))
                     ++parent_;
