@@ -126,7 +126,7 @@ namespace linq
         public:
             drop_enumerator(enumerator<T> &parent, int count) : parent_(parent)
             {
-                for (std::size_t i = 0; i < count && parent_.operator bool(); i++)
+                for (std::size_t i = 0; (i < count) && parent_.operator bool(); i++)
                 {
                     ++parent_;
                 }
@@ -261,6 +261,8 @@ namespace linq
         public:
             where_enumerator(enumerator<T> &parent, F predicate) : parent_(parent), predicate_(predicate)
             {
+                while (parent_.operator bool() && !predicate_(*parent_))
+                    ++parent_;
             }
 
             operator bool() override
@@ -270,8 +272,13 @@ namespace linq
 
             void operator++() override
             {
-                while (parent_.operator bool() && !predicate_(*parent_))
-                    ++parent_;
+                if (parent_.operator bool())
+                {
+                    do
+                    {
+                        ++parent_;
+                    } while (parent_.operator bool() && !predicate_(*parent_));
+                }
             }
 
             const T & operator*() override
