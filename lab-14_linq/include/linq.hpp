@@ -139,8 +139,7 @@ namespace linq
 
             void operator++() override
             {
-                if (parent_.operator bool())
-                    ++parent_;
+                ++parent_;
             }
 
             const T & operator*() override
@@ -167,11 +166,8 @@ namespace linq
 
             void operator++() override
             {
-                if (parent_.operator bool() && count_ > 0)
-                {
-                    ++parent_;
-                    count_--;
-                }
+                ++parent_;
+                count_--;
             }
 
             const T & operator*() override
@@ -199,11 +195,8 @@ namespace linq
 
             void operator++() override
             {
-                if (parent_.operator bool())
-                {
-                    ++parent_;
-                    next_ = true;
-                }
+                ++parent_;
+                next_ = true;
             }
 
             const T & operator*() override
@@ -213,6 +206,7 @@ namespace linq
                     tmp_ = func_(*parent_);
                     next_ = false;
                 }
+
                 return tmp_;
             }
 
@@ -233,16 +227,11 @@ namespace linq
 
             operator bool() const override
             {
-                return parent_.operator bool() && !end_;
+                return parent_.operator bool() && !end_ && (end_ = predicate_(*parent_));
             }
 
             void operator++() override
             {
-                if (end_ || parent_.operator bool() || predicate_(*parent_))
-                {
-                    end_ = true;
-                    return;
-                }
                 ++parent_;
             }
 
