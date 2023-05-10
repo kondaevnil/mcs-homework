@@ -234,7 +234,7 @@ namespace linq
 
             void operator++() override
             {
-                if (end_ || predicate_(parent_))
+                if (!parent_.operator bool() || end_ || predicate_(parent_))
                 {
                     end_ = false;
                     return;
