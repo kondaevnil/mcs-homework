@@ -232,7 +232,7 @@ namespace linq
                 {
                     cached_ = true;
 
-                    if (predicate_(*parent_))
+                    if (parent_.operator bool() && predicate_(*parent_))
                         end_ = true;
                 }
                 return parent_.operator bool() && !end_;
