@@ -42,13 +42,13 @@ namespace linq
             template<typename U = T, typename F>
             auto select(F func)
             {
-                return select_enumerator<U, T, F>(*this, func);
+                return select_enumerator<U, T, F>(*this, std::move(func));
             }
 
             template<typename F>
             auto until(F func)
             {
-                return until_enumerator<T, F>(*this, func);
+                return until_enumerator<T, F>(*this, std::move(func));
             }
 
             template<typename F>
@@ -60,13 +60,13 @@ namespace linq
             auto until_eq(T value)
             {
                 const auto func = [value](T a){ return a == value; };
-                return until_enumerator<T, decltype(func)>(*this, std::move(func));
+                return until_enumerator<T, decltype(func)>(*this, func);
             }
 
             auto where_neq(T value)
             {
                 const auto func = [value](T a){ return a != value; };
-                return where_enumerator<T, decltype(func)>(*this, std::move(func));
+                return where_enumerator<T, decltype(func)>(*this, func);
             }
 
             std::vector<T> to_vector()
