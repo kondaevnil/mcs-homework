@@ -54,19 +54,19 @@ namespace linq
             template<typename F>
             auto where(F func)
             {
-                return where_enumerator<T, F>(*this, func);
+                return where_enumerator<T, F>(*this, std::move(func));
             }
 
             auto until_eq(T value)
             {
                 const auto func = [value](T a){ return a == value; };
-                return until_enumerator<T, decltype(func)>(*this, func);
+                return until_enumerator<T, decltype(func)>(*this, std::move(func));
             }
 
             auto where_neq(T value)
             {
                 const auto func = [value](T a){ return a != value; };
-                return where_enumerator<T, decltype(func)>(*this, func);
+                return where_enumerator<T, decltype(func)>(*this, std::move(func));
             }
 
             std::vector<T> to_vector()
