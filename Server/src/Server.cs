@@ -70,17 +70,22 @@ public class Server
                         _field.GenerateRandom();
                         SendField(bw);
                         break;
-                    case RequestType.LoadField:
+                    case RequestType.UploadField:
                         try
                         {
                             HandleReadField(br);
-                            SendField(bw);
                         }
                         catch (IOException e)
                         {
                             // Send error
                             // TODO
                         }
+                        break;
+                    case RequestType.ChangeCellColor:
+                        HandleCellColor(br);
+                        break;
+                    case RequestType.DownloadField:
+                        // TODO
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -93,12 +98,15 @@ public class Server
         }
     }
 
+    // Client request
     private enum RequestType
     {
         NextGeneration,
         ResizeField,
         RandomFill,
-        LoadField,
+        UploadField,
+        DownloadField,
+        ChangeCellColor,
     }
 
     private void SendField(BinaryWriter bw)
@@ -152,6 +160,16 @@ public class Server
         _field!.Cells = cells;
         _field!.NeighborsForAlive = alive;
         _field!.NeighborsForDead = dead;
+    }
+
+    private void HandleCellColor(BinaryReader br)
+    {
+        var x = br.ReadInt32();
+        var y = br.ReadInt32();
+        var color = (Cell.Color)br.ReadInt32();
+
+        if (x >= 0 && x <= _field!.Width && y >= 0 && y <= _field.Height)
+            _field.ChangeCellColor(x, y, color);
     }
 
     private static (int, int) ReadSize(BinaryReader br)

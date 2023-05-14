@@ -44,6 +44,7 @@ public class Field
             _stream = TcpClient.GetStream();
             _binaryReader = new BinaryReader(_stream);
             _binaryWriter = new BinaryWriter(_stream);
+            _binaryWriter.Write((int)RequestType.RandomFill); // tmp
             ReadField();
         }
         catch (Exception e)
@@ -86,7 +87,9 @@ public class Field
         NextGeneration,
         ResizeField,
         RandomFill,
-        LoadField,
+        UploadField,
+        DownloadField,
+        ChangeCellColor,
     }
     
     private void SendSize(BinaryWriter bw, int w, int h)
@@ -122,7 +125,7 @@ public class Field
         SendCells(_binaryWriter);
         _binaryWriter.Flush();
     }
-
+    
     public void ResizeField(int w, int h)
     {
         _binaryWriter.Write((int)RequestType.ResizeField);
@@ -131,11 +134,7 @@ public class Field
         Width = w;
         Height = h;
     }
-
-    public void LoadField()
-    {
-        
-    }
+    
     private void ReadField()
     {
         var w = _binaryReader.ReadInt32();
@@ -212,5 +211,102 @@ public class Field
         }
 
         return cells;
+    }
+    
+    public void SaveFieldStateLocally(string path, string filename)
+    {
+        var exactPath = Path.Combine(Path.GetFullPath(path), filename);
+
+        using var bw = new BinaryWriter(File.Open(exactPath, FileMode.Create));
+        bw.Write(Width);
+        bw.Write(Height);
+        
+        bw.Write(NeighborsForAlive.Count);
+        foreach (var n in NeighborsForAlive)
+            bw.Write(n);
+        
+        bw.Write(NeighborsForDead.Count);
+        foreach (var n in NeighborsForDead)
+            bw.Write(n);
+
+        for (var i = 0; i < Width * Height; i++)
+        {
+            bw.Write((int)Cells[i].CurrentColor);
+            bw.Write(Cells[i].Longevity);
+        }
+    }
+
+    public void LoadFieldStateLocally(string path, string filename)
+    {
+        var exactPath = Path.Combine(Path.GetFullPath(path), filename);
+
+        if (!File.Exists(exactPath))
+            throw new FileNotFoundException($"File {filename} doesn't exist");
+
+        using var br = new BinaryReader(File.Open(exactPath, FileMode.Open));
+        
+        
+        // need to handle IO exceptions
+        var width = br.ReadInt32();
+        var height = br.ReadInt32();
+        var cells = new List<Cell>(width * height);
+        
+        var aliveCount = br.ReadInt32();
+        var neighborsForAlive = new SortedSet<int>();
+
+        for (var i = 0; i < aliveCount; i++)
+            neighborsForAlive.Add(br.ReadInt32());
+        
+        var deadCount = br.ReadInt32();
+        var neighborsForDead = new SortedSet<int>();
+
+        for (var i = 0; i < deadCount; i++)
+            neighborsForDead.Add(br.ReadInt32());
+
+        for (var i = 0; i < width * height; i++)
+        {
+            var color = (Cell.Color)br.ReadInt32();
+            var longevity = br.ReadUInt64();
+            
+            cells.Add(new Cell(color, longevity));
+        }
+
+        Width = width;
+        Height = height;
+        NeighborsForAlive = neighborsForAlive;
+        NeighborsForDead = neighborsForDead;
+        Cells = cells;
+    }
+    
+    public void CacheLastGame()
+    {
+        var sep = Path.DirectorySeparatorChar;
+        var path = $".{sep}Cache{sep}";
+        const string lastGameFileName = "LastGame.lf";
+
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
+        SaveFieldStateLocally(path, lastGameFileName);
+    }
+
+    public bool LoadLastGame()
+    {
+        var sep = Path.DirectorySeparatorChar;
+        var path = $".{sep}Cache{sep}";
+        const string lastGameFileName = "LastGame.lf";
+
+        if (!Directory.Exists(path)) return false;
+        LoadFieldStateLocally(path, lastGameFileName);
+        SendField();
+        return true;
+    }
+
+    public void ChangeCellColor(int x, int y, Cell.Color newColor)
+    {
+        _binaryWriter.Write((int)RequestType.ChangeCellColor);
+        _binaryWriter.Write(x);
+        _binaryWriter.Write(y);
+        _binaryWriter.Write((int)newColor);
+        // TODO CHECK IF RESULT OK
     }
 }
