@@ -1,0 +1,15 @@
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/bin/Debug/net7.0/TmpClient
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/bin/Debug/net7.0/TmpClient.deps.json
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/bin/Debug/net7.0/TmpClient.runtimeconfig.json
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/bin/Debug/net7.0/TmpClient.dll
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/bin/Debug/net7.0/TmpClient.pdb
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.csproj.AssemblyReference.cache
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.AssemblyInfoInputs.cache
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.AssemblyInfo.cs
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.csproj.CoreCompileInputs.cache
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.dll
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/refint/TmpClient.dll
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.pdb
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/TmpClient.genruntimeconfig.cache
+/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/TmpClient/obj/Debug/net7.0/ref/TmpClient.dll
