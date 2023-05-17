@@ -2,7 +2,7 @@
 using Avalonia.ReactiveUI;
 using System;
 
-namespace Client;
+namespace App;
 
 class Program
 {

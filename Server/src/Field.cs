@@ -26,6 +26,7 @@ internal class Field
         Width = 0;
         Height = 0;
         Cells = new List<Cell>();
+        Resize(1000, 1000);
         NeighborsForAlive = new SortedSet<int> {2, 3};
         NeighborsForDead = new SortedSet<int> {3};
     }
@@ -108,7 +109,7 @@ internal class Field
     public void NextGeneration()
     {
         for (var j = 0; j < Height; j++)
-        for (var i = 0; i < Width; i++)
-            CellFate(i, j);
+            for (var i = 0; i < Width; i++)
+                CellFate(i, j);
     }
 }

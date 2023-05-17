@@ -11,11 +11,14 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = Client
-build_property.ProjectDir = /Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/Client/
+build_property.RootNamespace = App
+build_property.ProjectDir = /Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/App/
 
-[/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/Client/App.axaml]
+[/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/App/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/Client/Views/MainWindow.axaml]
+[/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/App/Views/Field.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/App/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

@@ -34,19 +34,22 @@ public class Server
             _field = new Field();
             _isRunning = true;
 
+            using var tcpClient = await _tcpListener.AcceptTcpClientAsync();
+            Console.WriteLine("Connected");
+            var stream = tcpClient.GetStream();
+            var br = new BinaryReader(stream);
+            var bw = new BinaryWriter(stream);
+            
             while (_isRunning)
             {
-                using var tcpClient = await _tcpListener.AcceptTcpClientAsync();
-                var stream = tcpClient.GetStream();
-                var br = new BinaryReader(stream);
-                var bw = new BinaryWriter(stream);
-            
                 var request = (RequestType)br.ReadInt32();
+                Console.WriteLine($"Got request {request}");
 
                 switch (request)
                 {
                     case RequestType.NextGeneration:
                         _field.NextGeneration();
+                        Console.WriteLine("Calculated");
                         SendField(bw);
                         // should send all field
                         break;
@@ -112,9 +115,13 @@ public class Server
     private void SendField(BinaryWriter bw)
     {
         SendSize(bw);
+        Console.WriteLine("Send Size"); // TODO
         SendNeighbors(bw);
+        Console.WriteLine("Send Neighbors"); // TODO
         SendCells(bw);
+        Console.WriteLine("Send Cells"); // TODO
         bw.Flush();
+        Console.WriteLine("Has sent!");
     }
 
     private void SendSize(BinaryWriter bw)

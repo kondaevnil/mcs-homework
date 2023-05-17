@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Overby.Extensions.AsyncBinaryReaderWriter;
 
-namespace Client.Models;
+namespace App.Models;
 
 public class Field
 {
@@ -28,40 +32,62 @@ public class Field
     private static readonly TcpClient TcpClient = new();
     private readonly BinaryReader _binaryReader;
     private readonly BinaryWriter _binaryWriter;
+    private readonly AsyncBinaryReader _asyncBinaryReader;
+    private readonly AsyncBinaryWriter _asyncBinaryWriter;
     private readonly Stream _stream;
     
     public List<Cell> Cells { get; set; } = null!;
+    private List<Cell> _tmpCells;
     public int Width { get; set; }
     public int Height { get; set; }
     public SortedSet<int> NeighborsForAlive { get; set; } = null!;
     public SortedSet<int> NeighborsForDead { get; set; } = null!;
 
+    public static async Task<Field> BuildFieldAsync()
+    {
+        Console.WriteLine("Here!");
+        await TcpClient.ConnectAsync("127.0.0.1", 8888);
+        Console.WriteLine($"connected: {TcpClient.Connected}");
+        var field = new Field();
+        Console.WriteLine($"Ready");
+        return field;
+    }
+    
     public Field()
     {
-        try
-        {
-            TcpClient.ConnectAsync("127.0.0.1", 8888);
-            _stream = TcpClient.GetStream();
-            _binaryReader = new BinaryReader(_stream);
-            _binaryWriter = new BinaryWriter(_stream);
-            _binaryWriter.Write((int)RequestType.RandomFill); // tmp
-            ReadField();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        _stream = TcpClient.GetStream();
+        _binaryReader = new BinaryReader(_stream);
+        _binaryWriter = new BinaryWriter(_stream);
+        _asyncBinaryReader = new AsyncBinaryReader(_stream);
+        _asyncBinaryWriter = new AsyncBinaryWriter(_stream);
+        _tmpCells = new List<Cell>();
+        _binaryWriter.Write((int)RequestType.RandomFill); // tmp
+        ReadField();
     }
 
     public void CalculateNextGeneration()
     {
         _binaryWriter.Write((int)RequestType.NextGeneration);
-        SendField();
+        //SendField();
 
         try
         {
             ReadField();
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+    
+    public async void CalculateNextGenerationAsync()
+    {
+        await _asyncBinaryWriter.WriteAsync((int)RequestType.NextGeneration);
+        //SendField();
+
+        try
+        {
+            ReadFieldAsync();
         }
         catch (IOException e)
         {
@@ -111,10 +137,48 @@ public class Field
 
     private void SendCells(BinaryWriter bw)
     {
+        var i = 0;
+        
         foreach (var cell in Cells)
         {
+            if (i == 20000)
+                bw.Flush();
             bw.Write((int)cell.CurrentColor);
             bw.Write((long)cell.Longevity);
+            i++;
+            if (i % 1000 == 0)
+                Console.WriteLine(i);
+        }
+    }
+    
+    private async void SendSizeAsync(AsyncBinaryWriter bw, int w, int h)
+    {
+        await bw.WriteAsync(Width);
+        await bw.WriteAsync(Height);
+    }
+
+    private async void SendNeighborsAsync(AsyncBinaryWriter bw)
+    {
+        await bw.WriteAsync(NeighborsForAlive.Count);
+        foreach (var i in NeighborsForAlive)
+            await bw.WriteAsync(i);
+        
+        await bw.WriteAsync(NeighborsForDead.Count);
+        foreach (var i in NeighborsForDead)
+            await bw.WriteAsync(i);
+    }
+
+    private async void SendCellsAsync(AsyncBinaryWriter bw)
+    {
+        var i = 0;
+        
+        foreach (var cell in Cells)
+        {
+            await bw.WriteAsync((int)cell.CurrentColor);
+            await bw.WriteAsync((long)cell.Longevity);
+            i++;
+            if (i % 1000 == 0)
+                Console.WriteLine(i);
         }
     }
 
@@ -126,6 +190,13 @@ public class Field
         _binaryWriter.Flush();
     }
     
+    private async void SendFieldAsync()
+    {
+        SendSizeAsync(_asyncBinaryWriter, Width, Height);
+        SendNeighborsAsync(_asyncBinaryWriter);
+        SendCellsAsync(_asyncBinaryWriter);
+    }
+    
     public void ResizeField(int w, int h)
     {
         _binaryWriter.Write((int)RequestType.ResizeField);
@@ -133,40 +204,59 @@ public class Field
         ReadCells(_binaryReader, w, h);
         Width = w;
         Height = h;
+        Cells = _tmpCells;
+        _tmpCells.EnsureCapacity(w * h);
+    }
+    
+    public void ResizeFieldAsync(int w, int h)
+    {
+        _asyncBinaryWriter.WriteAsync((int)RequestType.ResizeField);
+        SendSizeAsync(_asyncBinaryWriter, w, h);
+        ReadCellsAsync(_asyncBinaryReader, w, h);
+        Width = w;
+        Height = h;
+        Cells = _tmpCells;
+        _tmpCells.EnsureCapacity(w * h);
     }
     
     private void ReadField()
     {
-        var w = _binaryReader.ReadInt32();
-        var h = _binaryReader.ReadInt32();
-        
-        var aliveNeighbour = _binaryReader.ReadInt32();
-        var alive = new SortedSet<int>();
-        if (alive == null) throw new ArgumentNullException(nameof(alive));
-        
-        for (var i = 0; i < aliveNeighbour; i++)
-            alive.Add(_binaryReader.ReadInt32());
-        
-        var deadNeighbour = _binaryReader.ReadInt32();
-        var dead = new SortedSet<int>();
-        if (dead == null) throw new ArgumentNullException(nameof(dead));
-        
-        for (var i = 0; i < deadNeighbour; i++)
-            dead.Add(_binaryReader.ReadInt32());
+        Console.WriteLine("Start Reading"); // TODO
+        var (w, h) = ReadSize(_binaryReader);
 
-        var cells = new List<Cell>(w * h);
-        if (cells == null) throw new ArgumentNullException(nameof(cells));
-        for (var i = 0; i < w * h; i++)
-        {
-            var color = (Cell.Color)_binaryReader.ReadInt32();
-            var longevity = _binaryReader.ReadUInt64();
-            cells.Add(new Cell(color, longevity));
-            Console.WriteLine(i);
-        }
+        if (w * h > _tmpCells.Capacity)
+            _tmpCells.EnsureCapacity(w * h);
 
+        var (alive, dead) = ReadNeighbors(_binaryReader);
+
+        Console.WriteLine("Reading cells"); // TODO
+        ReadCells(_binaryReader, w, h);
+
+        Console.WriteLine("writing results"); // TODO
         Width = w;
         Height = h;
-        Cells = cells;
+        Cells = _tmpCells;
+        NeighborsForAlive = alive;
+        NeighborsForDead = dead;
+    }
+    
+    private async void ReadFieldAsync()
+    {
+        Console.WriteLine("Start Reading"); // TODO
+        var (w, h) = await ReadSizeAsync(_asyncBinaryReader);
+
+        if (w * h > _tmpCells.Capacity)
+            _tmpCells.EnsureCapacity(w * h);
+
+        var (alive, dead) = await ReadNeighborsAsync(_asyncBinaryReader);
+
+        Console.WriteLine("Reading cells"); // TODO
+        ReadCellsAsync(_asyncBinaryReader, w, h);
+
+        Console.WriteLine("writing results"); // TODO
+        Width = w;
+        Height = h;
+        Cells = _tmpCells;
         NeighborsForAlive = alive;
         NeighborsForDead = dead;
     }
@@ -179,7 +269,7 @@ public class Field
         return (w, h);
     }
 
-    private static (SortedSet<int>, SortedSet<int>) ReadNeighbors(BinaryReader br)
+    private static (SortedSet<int> alive, SortedSet<int> dead) ReadNeighbors(BinaryReader br)
     {
         var aliveNeighbour = br.ReadInt32();
         var alive = new SortedSet<int>();
@@ -198,19 +288,63 @@ public class Field
         return (alive, dead);
     }
 
-    private static List<Cell> ReadCells(BinaryReader br, int w, int h)
+    private void ReadCells(BinaryReader br, int w, int h)
     {
-        var cells = new List<Cell>(w * h);
-        if (cells == null) throw new ArgumentNullException(nameof(cells));
         for (var i = 0; i < w * h; i++)
         {
             var color = (Cell.Color)br.ReadInt32();
             var longevity = br.ReadUInt64();
-            cells.Add(new Cell(color, longevity));
-            Console.WriteLine(i);
+            if (i >= _tmpCells.Count)
+                _tmpCells.Add(new Cell(color, longevity));
+            else
+            {
+                _tmpCells[i].CurrentColor = color;
+                _tmpCells[i].Longevity = longevity;
+            }
         }
+    }
+    
+    private static async Task<(int, int)> ReadSizeAsync(AsyncBinaryReader br)
+    {
+        var w = await br.ReadInt32Async();
+        var h = await br.ReadInt32Async();
 
-        return cells;
+        return (w, h);
+    }
+
+    private static async Task<(SortedSet<int> alive, SortedSet<int> dead)> ReadNeighborsAsync(AsyncBinaryReader br)
+    {
+        var aliveNeighbour = await br.ReadInt32Async();
+        var alive = new SortedSet<int>();
+        if (alive == null) throw new ArgumentNullException(nameof(alive));
+        
+        for (var i = 0; i < aliveNeighbour; i++)
+            alive.Add(await br.ReadInt32Async());
+        
+        var deadNeighbour = await br.ReadInt32Async();
+        var dead = new SortedSet<int>();
+        if (dead == null) throw new ArgumentNullException(nameof(dead));
+        
+        for (var i = 0; i < deadNeighbour; i++)
+            dead.Add(await br.ReadInt32Async());
+
+        return (alive, dead);
+    }
+
+    private async void ReadCellsAsync(AsyncBinaryReader br, int w, int h)
+    {
+        for (var i = 0; i < w * h; i++)
+        {
+            var color = (Cell.Color)await br.ReadInt32Async();
+            var longevity = await br.ReadUInt64Async();
+            if (i >= _tmpCells.Count)
+                _tmpCells.Add(new Cell(color, longevity));
+            else
+            {
+                _tmpCells[i].CurrentColor = color;
+                _tmpCells[i].Longevity = longevity;
+            }
+        }
     }
     
     public void SaveFieldStateLocally(string path, string filename)
