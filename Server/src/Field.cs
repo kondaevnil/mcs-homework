@@ -26,11 +26,13 @@ internal class Field
         Width = 0;
         Height = 0;
         Cells = new List<Cell>();
-        Resize(1000, 1000);
+        _cellsBuffer = new List<Cell>();
+        Resize(300, 300);
         NeighborsForAlive = new SortedSet<int> {2, 3};
         NeighborsForDead = new SortedSet<int> {3};
     }
-    
+
+    private List<Cell> _cellsBuffer;
     public List<Cell> Cells { get; set; }
     public int Width { get; set; }
     public int Height { get; set; }
@@ -51,6 +53,7 @@ internal class Field
     public void Resize(int width, int height)
     {
         var tmpList = new List<Cell>(width * height);
+        _cellsBuffer = new List<Cell>(width * height);
 
         for (var i = 0; i < height; i++)
         {
@@ -60,6 +63,8 @@ internal class Field
                     tmpList.Add(Cells[i * width + j]);
                 else
                     tmpList.Add(new Cell(Cell.Color.Dead, 0));
+                
+                _cellsBuffer.Add(new Cell(Cell.Color.Dead, 0));
             }
         }
 
@@ -82,7 +87,7 @@ internal class Field
         for (var i = -1; i < 2; i++)
         {
             for (var j = -1; j < 2; j++)
-                livingCount += Cells[Width * (i + Height + posY) % Height + (posX + j + Width) % Width].CurrentColor == Cell.Color.Alive ? 1 : 0;
+                livingCount += Cells[Width * ((i + Height + posY) % Height) + (posX + j + Width) % Width].CurrentColor == Cell.Color.Alive ? 1 : 0;
         }
 
         if (currentCell.CurrentColor != Cell.Color.Dead)
@@ -91,19 +96,25 @@ internal class Field
 
             if (!NeighborsForAlive.Contains(livingCount))
             {
-                Cells[Width * posY + posX].CurrentColor = Cell.Color.Dead;
+                _cellsBuffer[Width * posY + posX].CurrentColor = Cell.Color.Dead;
                 Cells[Width * posY + posX].Longevity = 0;
             }
             else
+            {
+                _cellsBuffer[Width * posY + posX].CurrentColor = currentCell.CurrentColor;
                 Cells[Width * posY + posX].Longevity++;
+            }
         }
         else if (NeighborsForDead.Contains(livingCount))
         {
-            Cells[Width * posY + posX].CurrentColor = Cell.Color.Alive;
+            _cellsBuffer[Width * posY + posX].CurrentColor = Cell.Color.Alive;
             Cells[Width * posY + posX].Longevity = 0;
         }
         else
+        {
+            _cellsBuffer[Width * posY + posX].CurrentColor = currentCell.CurrentColor;
             Cells[Width * posY + posX].Longevity++;
+        }
     }
     
     public void NextGeneration()
@@ -111,5 +122,7 @@ internal class Field
         for (var j = 0; j < Height; j++)
             for (var i = 0; i < Width; i++)
                 CellFate(i, j);
+        for (var i = 0; i < Width * Height; i++)
+            Cells[i].CurrentColor = _cellsBuffer[i].CurrentColor;
     }
 }

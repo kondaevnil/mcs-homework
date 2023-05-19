@@ -9,14 +9,19 @@ namespace App.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private Task<Field> _field = Models.Field.BuildFieldAsync();
+    public static readonly Task<Field> MyField = Field.GetInstanse();
 
     public MainWindowViewModel()
     {
     }
+    
+    public static event EventHandler? MyFunctionTriggered;
 
     public async void NextGeneration()
     {
-        await Task.Run(() => _field.Result.CalculateNextGenerationAsync());
+        await Task.Run(() => MyField.Result.CalculateNextGenerationAsync());
+        // TODO multiply calls doesn't work (server fails)
+        
+        MyFunctionTriggered?.Invoke(this, EventArgs.Empty);
     }
 }

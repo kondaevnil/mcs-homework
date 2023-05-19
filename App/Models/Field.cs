@@ -43,7 +43,14 @@ public class Field
     public SortedSet<int> NeighborsForAlive { get; set; } = null!;
     public SortedSet<int> NeighborsForDead { get; set; } = null!;
 
-    public static async Task<Field> BuildFieldAsync()
+    private static Field? _instanse = null;
+
+    public static async Task<Field> GetInstanse()
+    {
+        return _instanse ??= await BuildFieldAsync();
+    }
+    
+    private static async Task<Field> BuildFieldAsync()
     {
         Console.WriteLine("Here!");
         await TcpClient.ConnectAsync("127.0.0.1", 8888);
@@ -52,8 +59,8 @@ public class Field
         Console.WriteLine($"Ready");
         return field;
     }
-    
-    public Field()
+
+    private Field()
     {
         _stream = TcpClient.GetStream();
         _binaryReader = new BinaryReader(_stream);

@@ -8,10 +8,11 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="App">
-
+    
     <Panel>
         <DockPanel>
             <Button Command="{Binding NextGeneration}">Next Generation</Button>
+            <Canvas Name="Canvas"></Canvas>
         </DockPanel>
     </Panel>
 

@@ -1,7 +1,10 @@
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using static Server.Field;
+
+using System.Net.NetworkInformation;
 
 namespace Server;
 
@@ -39,7 +42,7 @@ public class Server
             var stream = tcpClient.GetStream();
             var br = new BinaryReader(stream);
             var bw = new BinaryWriter(stream);
-            
+
             while (_isRunning)
             {
                 var request = (RequestType)br.ReadInt32();
