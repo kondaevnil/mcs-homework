@@ -49,6 +49,11 @@ public class Field
     {
         return _instanse ??= await BuildFieldAsync();
     }
+
+    public Cell GetCell(int x, int y)
+    {
+        return Cells[Width * y + x];
+    }
     
     private static async Task<Field> BuildFieldAsync()
     {
@@ -68,8 +73,16 @@ public class Field
         _asyncBinaryReader = new AsyncBinaryReader(_stream);
         _asyncBinaryWriter = new AsyncBinaryWriter(_stream);
         _tmpCells = new List<Cell>();
-        _binaryWriter.Write((int)RequestType.RandomFill); // tmp
-        ReadField();
+
+        // TODO rewrite client-server side (use 2 streams instead of one) (don't use a queue in other tread)
+        if (false && LoadLastGame())
+        {
+            UploadField();
+        }
+        else
+        {
+            CalculateNextGeneration();
+        }
     }
 
     public void CalculateNextGeneration()
@@ -90,7 +103,6 @@ public class Field
     public async void CalculateNextGenerationAsync()
     {
         await _asyncBinaryWriter.WriteAsync((int)RequestType.NextGeneration);
-        //SendField();
 
         try
         {
@@ -102,12 +114,25 @@ public class Field
         }
     }
 
+    private void UploadField()
+    {
+        _binaryWriter.Write((int)RequestType.UploadField);
+        SendField();
+    }
+    
+    private async void UploadFieldAsync()
+    {
+        await _asyncBinaryWriter.WriteAsync((int)RequestType.UploadField);
+        await SendFieldAsync();
+    }
+
     public void GenerateRandom()
     {
         _binaryWriter.Write((int)RequestType.RandomFill);
         try
         {
-            ReadCells(_binaryReader, Width, Height);
+            ReadFieldAsync();
+            Console.WriteLine("Received");
         }
         catch (Exception e)
         {
@@ -123,6 +148,7 @@ public class Field
         UploadField,
         DownloadField,
         ChangeCellColor,
+        ChangeLiveRules,
     }
     
     private void SendSize(BinaryWriter bw, int w, int h)
@@ -148,8 +174,6 @@ public class Field
         
         foreach (var cell in Cells)
         {
-            if (i == 20000)
-                bw.Flush();
             bw.Write((int)cell.CurrentColor);
             bw.Write((long)cell.Longevity);
             i++;
@@ -167,12 +191,20 @@ public class Field
     private async void SendNeighborsAsync(AsyncBinaryWriter bw)
     {
         await bw.WriteAsync(NeighborsForAlive.Count);
+        Console.WriteLine("Alive");
         foreach (var i in NeighborsForAlive)
+        {
             await bw.WriteAsync(i);
+            Console.WriteLine(i);
+        }
         
         await bw.WriteAsync(NeighborsForDead.Count);
+        Console.WriteLine("Dead");
         foreach (var i in NeighborsForDead)
+        {
             await bw.WriteAsync(i);
+            Console.WriteLine(i);
+        }
     }
 
     private async void SendCellsAsync(AsyncBinaryWriter bw)
@@ -197,11 +229,12 @@ public class Field
         _binaryWriter.Flush();
     }
     
-    private async void SendFieldAsync()
+    private Task SendFieldAsync()
     {
         SendSizeAsync(_asyncBinaryWriter, Width, Height);
         SendNeighborsAsync(_asyncBinaryWriter);
         SendCellsAsync(_asyncBinaryWriter);
+        return Task.CompletedTask;
     }
     
     public void ResizeField(int w, int h)
@@ -356,7 +389,7 @@ public class Field
     
     public void SaveFieldStateLocally(string path, string filename)
     {
-        var exactPath = Path.Combine(Path.GetFullPath(path), filename);
+        var exactPath = filename == "" ? path : Path.Combine(Path.GetFullPath(path), filename);
 
         using var bw = new BinaryWriter(File.Open(exactPath, FileMode.Create));
         bw.Write(Width);
@@ -377,9 +410,9 @@ public class Field
         }
     }
 
-    public void LoadFieldStateLocally(string path, string filename)
+    public async void LoadFieldStateLocally(string path, string filename)
     {
-        var exactPath = Path.Combine(Path.GetFullPath(path), filename);
+        var exactPath = filename == "" ? path : Path.Combine(Path.GetFullPath(path), filename);
 
         if (!File.Exists(exactPath))
             throw new FileNotFoundException($"File {filename} doesn't exist");
@@ -417,6 +450,7 @@ public class Field
         NeighborsForAlive = neighborsForAlive;
         NeighborsForDead = neighborsForDead;
         Cells = cells;
+        await Task.Run(UploadFieldAsync);
     }
     
     public void CacheLastGame()
@@ -438,16 +472,38 @@ public class Field
 
         if (!Directory.Exists(path)) return false;
         LoadFieldStateLocally(path, lastGameFileName);
-        SendField();
         return true;
     }
 
-    public void ChangeCellColor(int x, int y, Cell.Color newColor)
+    public void ChangeCellColor(int x, int y)
     {
         _binaryWriter.Write((int)RequestType.ChangeCellColor);
         _binaryWriter.Write(x);
         _binaryWriter.Write(y);
-        _binaryWriter.Write((int)newColor);
+        var color = (Cell.Color)((int)(Cells[y * Width + x].CurrentColor + 1) % Enum.GetValues(typeof(Cell.Color)).Length);
+        _binaryWriter.Write((int)color);
         // TODO CHECK IF RESULT OK
+        Cells[y * Width + x].CurrentColor = color;
+    }
+
+    public void ChangeLiveRules(Cell.Color color, int count, bool toDelete)
+    {
+        if (color == Cell.Color.Dead)
+        {
+            if (toDelete)
+                NeighborsForDead.Remove(count);
+            else
+                NeighborsForDead.Add(count);
+        }
+        else
+        {
+            if (toDelete)
+                NeighborsForAlive.Remove(count);
+            else
+                NeighborsForAlive.Add(count);
+        }
+
+        _asyncBinaryWriter.WriteAsync((int)RequestType.ChangeLiveRules);
+        SendNeighborsAsync(_asyncBinaryWriter);
     }
 }
