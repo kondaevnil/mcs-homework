@@ -1,1 +1,0 @@
-loadtext TESTS_DIR/in.txt print "[%d, %d] "
