@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "t1gQ+NnAbCe8tGj10a0TDQWJD5NWQtrLxIVihgQNUnUQE5yYEBRxfQoykhCsqxv+O1LPK93tt30/wfq2OGFPAg==",
+  "success": true,
+  "projectFilePath": "/Users/danielkonev/RiderProjects/oop2-2023-csharp-life-kondaevnil/Server/Server.csproj",
+  "expectedPackageFiles": [
+    "/Users/danielkonev/.nuget/packages/avalonia/0.10.15/avalonia.0.10.15.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/avalonia.avaloniaedit/0.10.0/avalonia.avaloniaedit.0.10.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/avalonia.remote.protocol/0.10.15/avalonia.remote.protocol.0.10.15.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/jetbrains.annotations/10.3.0/jetbrains.annotations.10.3.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/markdown.avalonia/0.10.11/markdown.avalonia.0.10.11.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/markdown.avalonia.syntaxhigh/0.10.11/markdown.avalonia.syntaxhigh.0.10.11.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/markdown.avalonia.tight/0.10.11/markdown.avalonia.tight.0.10.11.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/messagebox.avalonia/2.0.2/messagebox.avalonia.2.0.2.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/microsoft.netcore.platforms/1.0.1/microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/overby.extensions.asyncbinaryreaderwriter/1.0.39/overby.extensions.asyncbinaryreaderwriter.1.0.39.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.collections.immutable/1.6.0/system.collections.immutable.1.6.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.componentmodel.annotations/4.5.0/system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.reactive/5.0.0/system.reactive.5.0.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.runtime/4.1.0/system.runtime.4.1.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
+    "/Users/danielkonev/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
