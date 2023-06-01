@@ -1,0 +1,3 @@
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-13_array/cmake-build-debug/CMakeFiles/lab-13_array.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-13_array/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-13_array/cmake-build-debug/CMakeFiles/rebuild_cache.dir

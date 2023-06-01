@@ -1,0 +1,14 @@
+# This lab:
+/lab-01_makefile
+
+# General build directories:
+# - for Makefile:
+/obj/
+# - for CMake, by default:
+/build/
+/_build/
+/CMakeLists.txt
+
+# CLion projects:
+/.idea/
+/cmake-build*/

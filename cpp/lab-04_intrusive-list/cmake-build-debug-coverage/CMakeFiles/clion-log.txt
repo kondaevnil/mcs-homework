@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja "-DCMAKE_CXX_FLAGS=-fprofile-instr-generate -fcoverage-mapping" "-DCMAKE_C_FLAGS=-fprofile-instr-generate -fcoverage-mapping" -G Ninja -S /Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-04_intrusive-list -B /Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-04_intrusive-list/cmake-build-debug-coverage
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-04_intrusive-list/cmake-build-debug-coverage

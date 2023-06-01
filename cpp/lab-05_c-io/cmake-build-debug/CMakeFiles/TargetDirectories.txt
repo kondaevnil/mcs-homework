@@ -1,0 +1,3 @@
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-05_c-io/cmake-build-debug/CMakeFiles/lab-05_c-io.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-05_c-io/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-05_c-io/cmake-build-debug/CMakeFiles/rebuild_cache.dir

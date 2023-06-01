@@ -1,0 +1,3 @@
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-14_linq/cmake-build-debug/CMakeFiles/lab-14_linq.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-14_linq/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-14_linq/cmake-build-debug/CMakeFiles/rebuild_cache.dir

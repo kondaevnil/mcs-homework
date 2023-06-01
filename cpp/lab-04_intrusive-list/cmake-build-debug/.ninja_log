@@ -1,0 +1,7 @@
+# ninja log v5
+0	139	1669749033855608290	CMakeFiles/lab-04_intrusive_list.dir/src/clist.c.o	4bb3b1b770ca7bab
+139	173	1669749033891596445	lab-04_intrusive_list	58b26d89d9ae7211
+34	59	1669751558573136462	lab-04_intrusive-list	5045c7fc875f0fde
+0	32	1669751558544836438	CMakeFiles/lab-04_intrusive-list.dir/src/clist.c.o	ee629fce7709ebc4
+0	34	1669751558547516922	CMakeFiles/lab-04_intrusive-list.dir/src/main.c.o	895587049c66f73d
+1	142	1669748123383724323	CMakeFiles/lab-04_intrusive_list.dir/src/main.c.o	488cf6c14c67fa60

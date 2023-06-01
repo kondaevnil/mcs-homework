@@ -1,0 +1,8 @@
+# ninja log v5
+2	410	1680044697214344968	CMakeFiles/lab-10_cppio.dir/src/bin_manip.cpp.o	bafd9e9070584278
+2	381	1680043938222071470	CMakeFiles/lab-10_cppio.dir/src/main.cpp.o	49ce1c6848c74ba1
+2	482	1680044697286760939	CMakeFiles/lab-10_cppio.dir/src/employees.cpp.o	3a41ce75d7a0663d
+482	518	1680044697325167599	lab-10_cppio	525c9e89e30ec892
+7	419	1680088771686185671	CMakeFiles/lab-10_cppio.dir/src/main.cpp.o	49ce1c6848c74ba1
+6	474	1680088771741880128	CMakeFiles/lab-10_cppio.dir/src/employees.cpp.o	3a41ce75d7a0663d
+474	513	1680088771782948035	lab-10_cppio	525c9e89e30ec892

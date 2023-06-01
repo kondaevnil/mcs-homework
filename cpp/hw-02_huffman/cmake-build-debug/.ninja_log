@@ -1,0 +1,9 @@
+# ninja log v5
+2	386	1682580177186815695	CMakeFiles/hw-02_huffman.dir/tests/generator.cpp.o	338c65e9e787e398
+600	640	1682581136089416653	hw-02_huffman	b7e3f3b361fcb16
+0	45	1682581244841190969	build.ninja	53163c44fc8f80d3
+3	446	1682541571500499726	CMakeFiles/hw-02_huffman.dir/src/bit_manip.cpp.o	a390d0054378fc17
+7	600	1682581136045392095	CMakeFiles/hw-02_huffman.dir/src/huffman.cpp.o	5ab19a16d2deb8c
+8	447	1682581135893350098	CMakeFiles/hw-02_huffman.dir/src/main.cpp.o	42c2f8d6143595e
+3	313	1682581247158279839	CMakeFiles/hw-02_huffman.dir/src/main.cpp.o	42c2f8d6143595e
+313	351	1682581247197988160	hw-02_huffman	ad2c06140aafebc1

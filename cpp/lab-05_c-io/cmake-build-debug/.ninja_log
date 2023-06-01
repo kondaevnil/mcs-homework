@@ -1,0 +1,5 @@
+# ninja log v5
+2	127	1670273778432084577	CMakeFiles/lab-05_c-io.dir/src/clist.c.o	86fdd7696d1f66db
+1	146	1670284283227650922	CMakeFiles/lab-05_c-io.dir/src/point_list.c.o	88c652401dc4c02a
+0	138	1670287196492894175	CMakeFiles/lab-05_c-io.dir/src/main.c.o	901e3fc9fb17eb56
+138	174	1670287196531239731	lab-05_c-io	bcc0309eb97c160d

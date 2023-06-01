@@ -1,0 +1,5 @@
+# ninja log v5
+10	63	1678372884428290172	build.ninja	23fbcb0645a596db
+408	446	1677791971561301152	lab-07_matrix	cbc871ad57c4c889
+1	199	1677791971312656112	CMakeFiles/lab-07_matrix.dir/src/matrix.cpp.o	68756dbd5ec79ea4
+0	407	1677791971520454941	CMakeFiles/lab-07_matrix.dir/src/main.cpp.o	c12fbd48ab94d3b6

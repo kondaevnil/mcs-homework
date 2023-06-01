@@ -1,0 +1,3 @@
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-07_matrix/cmake-build-debug/CMakeFiles/lab-07_matrix.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-07_matrix/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/danielkonev/Desktop/mcs/hw/labs/labs-konev/lab-07_matrix/cmake-build-debug/CMakeFiles/rebuild_cache.dir
