@@ -7,4 +7,4 @@ include_directories(include)
 
 add_executable(lab-14_linq
         include/linq.hpp
-        src/test.cpp)
+        src/test.cpp tests/smoke_test.cpp tests/minimal_smoke_test.cpp)
