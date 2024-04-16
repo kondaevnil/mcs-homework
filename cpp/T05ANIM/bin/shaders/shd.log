@@ -1,0 +1,54 @@
+point/geom
+0(13) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+
+point/geom
+0(13) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+
+point/geom
+0(13) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : warning C7022: unrecognized profile specifier "a"
+0(7) : error C0502: syntax error at to
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : warning C7022: unrecognized profile specifier "a"
+0(7) : error C0502: syntax error at to
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : warning C7022: unrecognized profile specifier "a"
+0(7) : error C0502: syntax error at to
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : warning C7022: unrecognized profile specifier "a"
+0(7) : error C0502: syntax error at to
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : warning C7022: unrecognized profile specifier "a"
+0(7) : error C0502: syntax error at to
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : error C5060: out can't be used with non-varying DrawTexCoord
+0(13) : warning C7532: glob
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : error C5060: out can't be used with non-varying DrawTexCoord
+0(13) : warning C7532: glob
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : error C5060: out can't be used with non-varying DrawTexCoord
+0(13) : warning C7532: glob
+sky/geom
+0(2) : error C0204: version directive must be first statement and may not be repeated
+0(4) : error C0000: syntax error, unexpected '(', expecting "::" at token "("
+0(7) : error C5060: out can't be used with non-varying DrawTexCoord
+0(13) : warning C7532: glob

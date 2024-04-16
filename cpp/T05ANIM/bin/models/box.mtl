@@ -1,0 +1,527 @@
+newmtl MP_0
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_0.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_1
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_1.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_10
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_10.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_10.002
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_10.003
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_11
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_11.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_12
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_12.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_13
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_13.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_14
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_14.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_15
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_15.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_16
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_16.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_17
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_17.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_18
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_18.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_19
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_19.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_2
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_2.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_3
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_3.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_4
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_4.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T000.png
+
+newmtl MP_5
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T004.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T004.png
+
+newmtl MP_5.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T004.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T004.png
+
+newmtl MP_6
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T006.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T006.png
+
+newmtl MP_6.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T006.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T006.png
+
+newmtl MP_7
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_7.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_8
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_8.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_9
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl MP_9.001
+Ns 180.000044
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00A.png
+
+newmtl Material_#183
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00E.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00E.png
+
+newmtl Material_#183.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00E.png
+map_d C:\\Users\\DK6\\Downloads\\a21-pc-lila-decyrus-swimsuit\\source\\(A21 - PC) - Lila Decyrus (Swimsuit)\\Textures\\T00E.png
